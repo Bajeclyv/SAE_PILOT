@@ -20,5 +20,14 @@
                 Width="200"
                 VerticalAlignment="Center" />
         </StackPanel>
+        <DataGrid HorizontalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Commande" />
+                <DataGridTextColumn Header="Date de création" />
+                <DataGridTextColumn Header="Date de livraison" />
+                <DataGridTextColumn Header="Revendeur" />
+                <DataGridTextColumn Header="Fait par" />
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </UserControl>
