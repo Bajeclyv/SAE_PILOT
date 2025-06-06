@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace SAE_PILOT.Model
 {
-    // FAIRE DICTIONNAIRE AVEC ID ET COULEUR GRACE A COULEURPRODUIT //
     public enum Coloris { Bleu, Rouge, Vert, Noir};
     public class Couleur
     {
