@@ -1,12 +1,53 @@
-﻿<Window x:Class="SAE_PILOT.View.AjouterRevendeur"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SAE_PILOT.View"
-        mc:Ignorable="d"
-        Title="AjouterRevendeur" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+﻿<Window
+    x:Class="SAE_PILOT.View.AjouterRevendeur"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE_PILOT.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AjouterRevendeur"
+    Width="400"
+    Height="300"
+    mc:Ignorable="d">
+    <StackPanel Margin="20,0,20,0" VerticalAlignment="Center">
+        <Label Content="Ajouter un revendeur" FontSize="24" />
+        <StackPanel HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="300" />
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel>
+                <Label Content="_Raison sociale" Target="{Binding ElementName=tbRaisonSociale}" />
+                <TextBox x:Name="tbRaisonSociale" />
+            </StackPanel>
+            <StackPanel>
+                <Label Content="_Adresse" Target="{Binding ElementName=tbAdresse}" />
+                <TextBox x:Name="tbAdresse" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Width" Value="150" />
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel>
+                    <Label Content="Code postal" Target="{Binding ElementName=tbCodePostal}" />
+                    <TextBox x:Name="tbCodePostal" />
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Ville" Target="{Binding ElementName=tbVille}" />
+                    <TextBox x:Name="tbVille" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Button
+            x:Name="btnAjouterRevendeur"
+            Width="200"
+            Height="30"
+            Margin="0,20,0,0"
+            HorizontalAlignment="Center"
+            Content="Ajouter me revendeur"
+            FontSize="16" />
+    </StackPanel>
 </Window>
