@@ -124,6 +124,8 @@ namespace SAE_PILOT.Model
         {
             get
             {
+                // Récuperer liste des produits d'une commande et faire la somme //
+                // Somme  des prix pour laquelle les id de commande sont identiques //
                 return Math.Round(Detail.QteCommande * Detail.Prix, 2); 
             }
         }

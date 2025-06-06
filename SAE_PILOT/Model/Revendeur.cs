@@ -11,12 +11,12 @@ namespace SAE_PILOT.Model
         private int numReveneur;
         private string raisonSociale;
         private string adresseRue;
-        private int adresseCP;
+        private string adresseCP;
         private string adresseVille;
 
         private Revendeur () { }
         public Revendeur(int numReveneur, string raisonSociale, 
-            string adresseRue, int adresseCP, string adresseVille)
+            string adresseRue, string adresseCP, string adresseVille)
         {
             this.NumReveneur = numReveneur;
             this.RaisonSociale = raisonSociale;
@@ -25,7 +25,7 @@ namespace SAE_PILOT.Model
             this.AdresseVille = adresseVille;
         }
         public Revendeur(string raisonSociale,
-            string adresseRue, int adresseCP, string adresseVille)
+            string adresseRue, string adresseCP, string adresseVille)
         {
             this.RaisonSociale = raisonSociale;
             this.AdresseRue = adresseRue;
@@ -72,7 +72,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public int AdresseCP
+        public string AdresseCP
         {
             get
             {

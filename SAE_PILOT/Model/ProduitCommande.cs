@@ -70,12 +70,7 @@ namespace SAE_PILOT.Model
         {
             get
             {
-                return this.prix;
-            }
-
-            set
-            {
-                this.prix = value;
+                return UnProduit.PrixVente * QteCommande;
             }
         }
     }
