@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_PILOT.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace SAE_PILOT.View.UserControls
         public UCRevendeur()
         {
             InitializeComponent();
+        }
+
+        private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)
+        {
+            WindowRevendeur windowRevendeur = new WindowRevendeur();
+            windowRevendeur.ShowDialog();
+
+            if (windowRevendeur.DialogResult == true)
+            {
+                if (windowRevendeur.LeRevendeur is not null)
+                {
+                    Revendeur r = windowRevendeur.LeRevendeur;
+                    r.Create();
+                }
+            }
         }
     }
 }

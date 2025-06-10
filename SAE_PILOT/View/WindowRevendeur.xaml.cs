@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_PILOT.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,17 @@ namespace SAE_PILOT.View
     /// </summary>
     public partial class WindowRevendeur : Window
     {
+        public Revendeur LeRevendeur;
+
         public WindowRevendeur()
         {
             InitializeComponent();
+        }
+
+        private void butValiderRevendeur_Click(object sender, RoutedEventArgs e)
+        {
+            LeRevendeur = (Revendeur)this.DataContext;
+            this.DialogResult = true;
         }
     }
 }

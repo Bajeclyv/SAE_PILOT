@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_PILOT.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,21 @@ namespace SAE_PILOT.View.UserControls
         public UCCommande()
         {
             InitializeComponent();
+        }
+
+        private void btnCreerCommande_Click(object sender, RoutedEventArgs e)
+        {
+            WindowCommande windowCommande = new WindowCommande();
+            windowCommande.ShowDialog();
+
+            if (windowCommande.DialogResult == true)
+            {
+                if (windowCommande.DataContext is not null)
+                {
+                    Commande r = windowCommande.DataContext as Commande;
+                    r.Create();
+                }
+            }
         }
     }
 }
