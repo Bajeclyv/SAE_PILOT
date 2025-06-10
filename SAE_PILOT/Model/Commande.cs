@@ -138,7 +138,6 @@ namespace SAE_PILOT.Model
             this.DateLivraison = date;
         }
 
-        // int numCommande, Employe unEmploye, ModeTransport unTransport, Revendeur unRevendeur, DateTime dateCommande
         public List<Commande> FindAll()
         {
             List<Commande> lesCommandes = new List<Commande>();
@@ -157,9 +156,20 @@ namespace SAE_PILOT.Model
             return lesCommandes;
         }
 
+        // int numCommande, Employe unEmploye, ModeTransport unTransport, Revendeur unRevendeur, DateTime dateCommande
         public int Create()
         {
-            throw new NotImplementedException();
+            int nb = 0;
+            using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO commande (numemploye, numtransport, numrevendeur, datecommande) VALUES (@numemploye, @numtransport, @numrevendeur, @datecommande)"))
+            {
+                cmd.Parameters.AddWithValue("numemploye", this.UnEmploye.NumEmploye);
+                cmd.Parameters.AddWithValue("numtransport", this.UnTransport.NumTransport);
+                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumReveneur);
+                cmd.Parameters.AddWithValue("datecommande", this.DateCommande.ToShortDateString());
+                nb = DataAccess.Instance.ExecuteInsert(cmd);
+            }
+            this.NumCommande = nb;
+            return nb;
         }
 
         public void Read()
