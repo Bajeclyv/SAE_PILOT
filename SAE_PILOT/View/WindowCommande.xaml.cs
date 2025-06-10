@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SAE_PILOT.View
 {
     /// <summary>
-    /// Logique d'interaction pour AjouterRevendeur.xaml
+    /// Logique d'interaction pour WindowCommande.xaml
     /// </summary>
-    public partial class AjouterRevendeur : Window
+    public partial class WindowCommande : Window
     {
-        public AjouterRevendeur()
+        public WindowCommande()
         {
             InitializeComponent();
         }

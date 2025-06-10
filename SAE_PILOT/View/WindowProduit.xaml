@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="SAE_PILOT.View.WindowProduit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE_PILOT.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="WindowProduit"
+    Width="500"
+    Height="400"
+    mc:Ignorable="d">
+    <StackPanel
+        x:Name="ckDispo"
+        Width="300"
+        Height="350">
+        <Label x:Name="labCode" Content="Code produit" />
+        <TextBox
+            x:Name="boxCode"
+            Width="120"
+            Text="{Binding CodeProduit, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <Label x:Name="labNom" Content="Nom" />
+        <TextBox
+            x:Name="boxNom"
+            Width="120"
+            Text="{Binding NomProduit, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <Label x:Name="labType" Content="Type" />
+        <TextBox
+            x:Name="boxType"
+            Width="120"
+            Text="{Binding LeType, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <Label x:Name="labPointe" Content="Type de pointe" />
+        <TextBox
+            x:Name="boxPointe"
+            Width="120"
+            Text="{Binding LeTypePointe, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <Label x:Name="labVente" Content="Prix de vente" />
+        <TextBox
+            x:Name="boxVente"
+            Width="120"
+            Text="{Binding PrixVente, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <Label x:Name="labStock" Content="Stock" />
+        <TextBox
+            x:Name="boxStock"
+            Width="120"
+            Text="{Binding QteStock, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <CheckBox Content="Disponible" IsChecked="{Binding Disponible, ValidatesOnExceptions=True}" />
+        <Button
+            x:Name="butValiderProduit"
+            Width="60"
+            Height="25"
+            Content="Valider" />
+    </StackPanel>
+</Window>

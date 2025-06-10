@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="SAE_PILOT.View.WindowCommande"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SAE_PILOT.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="WindowCommande"
+    Width="500"
+    Height="400"
+    mc:Ignorable="d">
+    <StackPanel
+        x:Name="panelCreerCom"
+        Width="250"
+        Height="250">
+        <Label
+            x:Name="labTransport"
+            Margin="0,0,0,5"
+            Content="Mode de _transport"
+            Target="{Binding ElementName=cbTransport}" />
+        <ComboBox
+            x:Name="cbTransport"
+            Width="250"
+            Height="25">
+            <ComboBoxItem>UPS</ComboBoxItem>
+            I=
+            <ComboBoxItem>Chronospost</ComboBoxItem>
+            <ComboBoxItem>Relais</ComboBoxItem>
+        </ComboBox>
+        <Label
+            x:Name="labRevendeur"
+            Margin="0,0,0,5"
+            Content="_Revendeur"
+            Target="{Binding ElementName=boxRevendeur}" />
+        <TextBox
+            x:Name="boxRevendeur"
+            Width="250"
+            Height="25"
+            Margin="0,0,0,10"
+            Text="{Binding UnRevendeur, ValidatesOnExceptions=True}"
+            TextWrapping="Wrap" />
+        <Label
+            x:Name="labLivraison"
+            Margin="0,0,0,5"
+            Content="Date de _livraison"
+            Target="{Binding ElementName=pickLivraison}" />
+        <DatePicker
+            x:Name="pickLivraison"
+            Width="250"
+            Height="25" />
+        <Button
+            x:Name="butCreerCom"
+            Width="100"
+            Height="25"
+            Margin="0,30,0,0"
+            Content="Créer commande" />
+    </StackPanel>
+</Window>
