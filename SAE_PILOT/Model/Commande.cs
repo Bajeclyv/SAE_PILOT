@@ -13,34 +13,21 @@ namespace SAE_PILOT.Model
         private ModeTransport unTransport;
         private Revendeur unRevendeur;
         private DateTime dateCommande;
-        private DateTime dateLivraison;
-        private double prixTotal;
+        private DateTime? dateLivraison;
 
-        // REVOIR LES DATES DE CREATION ET LIVRAISON //
+        private ProduitCommande detail;
+
         public Commande () { }
-        public Commande(int numCommande, Employe unEmploye, ModeTransport unTransport, 
-            Revendeur unRevendeur, DateTime dateCommande, DateTime dateLivraison, double prixTotal)
+        public Commande(int numCommande, Employe unEmploye, ModeTransport unTransport,
+            Revendeur unRevendeur, DateTime dateCommande)
         {
             this.NumCommande = numCommande;
             this.UnEmploye = unEmploye;
             this.UnTransport = unTransport;
             this.UnRevendeur = unRevendeur;
             this.DateCommande = dateCommande;
-            this.DateLivraison = dateLivraison;
-            this.PrixTotal = prixTotal;
+            this.DateLivraison = null;
         }
-
-        public Commande(Employe unEmploye, ModeTransport unTransport,
-            Revendeur unRevendeur, DateTime dateCommande, DateTime dateLivraison, double prixTotal)
-        {
-            this.UnEmploye = unEmploye;
-            this.UnTransport = unTransport;
-            this.UnRevendeur = unRevendeur;
-            this.DateCommande = dateCommande;
-            this.DateLivraison = dateLivraison;
-            this.PrixTotal = prixTotal;
-        }
-
 
         public int NumCommande
         {
@@ -107,7 +94,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public DateTime DateLivraison
+        public DateTime? DateLivraison
         {
             get
             {
@@ -120,17 +107,32 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public double PrixTotal
+        public ProduitCommande Detail
         {
             get
             {
-                return this.prixTotal;
+                return this.detail;
             }
 
             set
             {
-                this.prixTotal = value;
+                this.detail = value;
             }
+        }
+
+        public double PrixTotal
+        {
+            get
+            {
+                // Récuperer liste des produits d'une commande et faire la somme //
+                // Somme  des prix pour laquelle les id de commande sont identiques //
+                return Math.Round(Detail.QteCommande * Detail.Prix, 2); 
+            }
+        }
+
+        public void SaisirDateLivraison (DateTime date)
+        {
+            this.DateLivraison = date;
         }
     }
 }
