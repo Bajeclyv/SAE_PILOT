@@ -48,5 +48,6 @@ namespace SAE_PILOT.Model
                 this.libelleCouleur = value;
             }
         }
+
     }
 }

@@ -14,7 +14,7 @@ namespace SAE_PILOT.Model.Tests
         [TestMethod()]
         public void CreateTest()
         {
-            Assert.Are
+            // Assert.AreEqual();
         }
     }
 }

@@ -11,7 +11,7 @@
     Height="450"
     mc:Ignorable="d">
     <Window.Resources>
-        <model:Revendeur x:Key="NouveauRevendeur" />
+        <model:Revendeur x:Key="NouveauRevendeur" x:Name="NouveauRevendeur" />
     </Window.Resources>
     <StackPanel
         x:Name="panelRevendeur"
@@ -40,7 +40,7 @@
             Width="250"
             Height="25"
             Margin="0,0,0,10"
-            Text="{Binding AsresseRue, ValidatesOnExceptions=True}"
+            Text="{Binding AdresseRue, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
         <Label
             x:Name="labCP"
@@ -69,6 +69,7 @@
             Width="100"
             Height="25"
             Margin="0,30,0,0"
+            Click="butValiderRevendeur_Click"
             Content="Valider" />
     </StackPanel>
 </Window>

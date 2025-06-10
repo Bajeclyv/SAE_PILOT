@@ -31,8 +31,12 @@
             Content="&#xE710;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
+<<<<<<< HEAD
             RenderTransformOrigin="0.534,0.038"
             ToolTip="Ajouter" />
+=======
+            ToolTip="Ajouter" Click="butCreerRevendeur_Click" />
+>>>>>>> e3f47961c94611e52bcd26fa53bee5f8277a80b6
         <Button
             x:Name="butModifierRevendeur"
             Width="30"

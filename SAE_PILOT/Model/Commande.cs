@@ -175,17 +175,37 @@ namespace SAE_PILOT.Model
 
         public void Read()
         {
-            throw new NotImplementedException();
+            using (var cmdSelect = new NpgsqlCommand("SELECT * FROM commande JOIN employe ON commande.numemploye = employe.numemploye JOIN role ON employe.numrole = role.numrole JOIN revendeur ON commande.numrevendeur = revendeur.numrevendeur;"))
+            {
+                cmdSelect.Parameters.AddWithValue("numcommande", this.NumCommande);
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                this.UnEmploye.NumEmploye = (int)dt.Rows[0]["numemploye"];
+                this.UnTransport.NumTransport = (int)dt.Rows[0]["numtransport"];
+                this.UnRevendeur.NumReveneur = (int)dt.Rows[0]["numrevendeur"];
+                this.DateCommande = DateTime.Parse((string)dt.Rows[0]["datecommande"]);
+                this.DateLivraison = DateTime.Parse((string)dt.Rows[0]["datelivraison"]);
+            }
         }
 
         public int Update()
         {
-            throw new NotImplementedException();
+            using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE commande SET numemploye=@numemploye, numtransport=@numtransport, numrevendeur=@numrevendeur, datecommande=@datecommande WHERE numcommande = @numcommande;"))
+            {
+                cmd.Parameters.AddWithValue("numemploye", this.UnEmploye.NumEmploye);
+                cmd.Parameters.AddWithValue("numtransport", this.UnTransport.NumTransport);
+                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumReveneur);
+                cmd.Parameters.AddWithValue("datecommande", this.DateCommande.ToShortDateString());
+                return DataAccess.Instance.ExecuteSet(cmd);
+            }
         }
 
         public int Delete()
         {
-            throw new NotImplementedException();
+            using (var cmdUpdate = new NpgsqlCommand("delete from commande  where numcommande = @numcommande;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("id", this.NumCommande);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
         }
 
         public List<Commande> FindBySelection(string criteres)
