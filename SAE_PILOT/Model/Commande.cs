@@ -151,7 +151,8 @@ namespace SAE_PILOT.Model
                         new Employe((Int32)dr["employe.numemploye"], new Role((int)dr["role.numrole"], (RoleEmploye)dr["libellerole"]), (string)dr["nom"], (string)dr["prenom"], (string)dr["password"], (string)dr["login"]),
                         new ModeTransport((int)dr["modetransport.numtransport"], (Mode)dr["libelletransport"]),
                         new Revendeur((int)dr["revendeur.numrevendeur"], (string)dr["raisonsociale"], (string)dr["adresserue"], (string)dr["adressecp"], (string)dr["adresseville"]),
-                        DateTime.Parse((string)dr["datecommande"])));
+                        DateTime.Parse((string)dr["datecommande"])
+                    ));
             }
             return lesCommandes;
         }

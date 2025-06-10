@@ -5,10 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE_PILOT.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:SAE_PILOT.Model"
     Title="WindowCommande"
     Width="500"
     Height="400"
     mc:Ignorable="d">
+    <Window.Resources>
+        <model:Commande x:Key="NouvelleCommande" />
+    </Window.Resources>
     <StackPanel
         x:Name="panelCreerCom"
         Width="250"
