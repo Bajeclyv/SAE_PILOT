@@ -20,9 +20,12 @@
                 Width="200"
                 VerticalAlignment="Center" />
         </StackPanel>
-        <DataGrid HorizontalAlignment="Center">
+        <DataGrid
+            HorizontalAlignment="Center"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Source=LesCommandes}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID Commande" />
+                <DataGridTextColumn Binding="{Binding NumCommande}" Header="ID Commande" />
                 <DataGridTextColumn Header="Date de création" />
                 <DataGridTextColumn Header="Date de livraison" />
                 <DataGridTextColumn Header="Revendeur" />

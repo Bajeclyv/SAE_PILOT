@@ -143,17 +143,16 @@ namespace SAE_PILOT.Model
         {
             List<Commande> lesCommandes = new List<Commande>();
             
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("" +
-                "SELECT *" +
-                "FROM commande" +
-                "   JOIN"))
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM commande JOIN employe ON commande.numemploye = employe.numemploye JOIN role ON employe.numrole = role.numrole JOIN revendeur ON commande.numrevendeur = revendeur.numrevendeur;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                     lesCommandes.Add(new Commande(
                         (Int32)dr["numcommande"],
-                        Employe.Find
-                    ));
+                        new Employe((Int32)dr["employe.numemploye"], new Role((int)dr["role.numrole"], (RoleEmploye)dr["libellerole"]), (string)dr["nom"], (string)dr["prenom"], (string)dr["password"], (string)dr["login"]),
+                        new ModeTransport((int)dr["modetransport.numtransport"], (Mode)dr["libelletransport"]),
+                        new Revendeur((int)dr["revendeur.numrevendeur"], (string)dr["raisonsociale"], (string)dr["adresserue"], (string)dr["adressecp"], (string)dr["adresseville"]),
+                        DateTime.Parse((string)dr["datecommande"])));
             }
             return lesCommandes;
         }

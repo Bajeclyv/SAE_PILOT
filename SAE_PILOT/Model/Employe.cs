@@ -141,11 +141,11 @@ namespace SAE_PILOT.Model
             List<Employe> lesEmployes = new List<Employe>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM employe JOIN role"))
             {
-                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                /*DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                     lesEmployes.Add(new Employe(
                         (int)dr["numemploye"],
-                        new Role()));
+                        new Role()));*/
             }
 
             return lesEmployes;

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SAE_PILOT.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +22,11 @@ namespace SAE_PILOT.View.UserControls
     /// </summary>
     public partial class UCSynthese : UserControl
     {
+        public ObservableCollection<Commande> LesCommandes;
+
         public UCSynthese()
         {
+            LesCommandes = new ObservableCollection<Commande>(new Commande().FindAll());
             InitializeComponent();
         }
     }
