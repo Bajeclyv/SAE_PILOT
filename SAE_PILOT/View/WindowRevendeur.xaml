@@ -5,10 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SAE_PILOT.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:SAE_PILOT.Model"
     Title="WindowRevendeur"
     Width="800"
     Height="450"
     mc:Ignorable="d">
+    <Window.Resources>
+        <model:Revendeur x:Key="NouveauRevendeur" />
+    </Window.Resources>
     <StackPanel
         x:Name="panelRevendeur"
         Width="250"

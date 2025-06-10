@@ -17,7 +17,7 @@ namespace SAE_PILOT.Model
         private string adresseCP;
         private string adresseVille;
 
-        private Revendeur () { }
+        public Revendeur () { }
         public Revendeur(int numReveneur, string raisonSociale, 
             string adresseRue, string adresseCP, string adresseVille)
         {
