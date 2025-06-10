@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TD3_BindingBDPension.Model;
 
 namespace SAE_PILOT.Model
 {
-    public class Employe
+    public class Employe : ICrud<Employe>
     {
         private int numEmploye;
         private Role unRole;
@@ -111,6 +114,46 @@ namespace SAE_PILOT.Model
             {
                 this.login = value;
             }
+        }
+
+        public int Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employe> FindAll()
+        {
+            List<Employe> lesEmployes = new List<Employe>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM employe JOIN role"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                    lesEmployes.Add(new Employe(
+                        (int)dr["numemploye"],
+                        new Role()));
+            }
+
+            return lesEmployes;
+        }
+
+        public List<Employe> FindBySelection(string criteres)
+        {
+            throw new NotImplementedException();
         }
     }
 }

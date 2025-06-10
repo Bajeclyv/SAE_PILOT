@@ -143,17 +143,18 @@ namespace SAE_PILOT.Model
         {
             List<Commande> lesCommandes = new List<Commande>();
             
-            /*using (NpgsqlCommand cmdSelect = new NpgsqlCommand("" +
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("" +
                 "SELECT *" +
                 "FROM commande" +
                 "   JOIN"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
-                    lesCommandes.Add(new Commande((Int32)dr["numcommande"],
-                        new Employe()
+                    lesCommandes.Add(new Commande(
+                        (Int32)dr["numcommande"],
+                        Employe.Find
                     ));
-            }*/
+            }
             return lesCommandes;
         }
 
