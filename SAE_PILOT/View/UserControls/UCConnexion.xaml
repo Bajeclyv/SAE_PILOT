@@ -11,8 +11,9 @@
     <StackPanel
         x:Name="panelConnexion"
         Width="200"
-        Margin="396,131,0,60"
-        HorizontalAlignment="Left">
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+
         <Label
             x:Name="titleConnexion"
             Margin="0,0,0,20"
@@ -45,8 +46,10 @@
             Width="80"
             Height="25"
             Margin="0,30,0,0"
-            Background="{x:Null}"
-            BorderBrush="#FFABADB3"
-            Content="Se connecter" />
+            Background="#FF19459A"
+            BorderBrush="{x:Null}"
+            Content="Se connecter"
+            Foreground="#FFF8F6F6" />
+
     </StackPanel>
 </UserControl>

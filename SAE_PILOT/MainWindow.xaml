@@ -8,17 +8,25 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    WindowState="Maximized"
+    ResizeMode="NoResize"
     mc:Ignorable="d">
     <Grid Grid.Row="1">
-        <local:UCConnexion />
-        <StackPanel Margin="0,0,588,0" Background="#FF19459A">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Grid.Column="0"
+            Margin="0,0,0,0"
+            Background="#FF19459A">
             <Button
                 x:Name="butRevendeur"
                 Margin="20,150,0,20"
                 HorizontalAlignment="Left"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}"
+                Click="butRevendeur_Click"
                 Content="Revendeur"
                 FontFamily="Rubik"
                 FontSize="16"
@@ -29,6 +37,7 @@
                 HorizontalAlignment="Left"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}"
+                Click="butCommande_Click"
                 Content="Commande"
                 FontFamily="Rubik"
                 FontSize="16"
@@ -39,25 +48,22 @@
                 HorizontalAlignment="Left"
                 Background="{x:Null}"
                 BorderBrush="{x:Null}"
+                Click="butProduit_Click"
                 Content="Produit"
                 FontFamily="Rubik"
                 FontSize="16"
                 Foreground="#FFF7F6F6" />
         </StackPanel>
-        <Label
-            x:Name="labBienvenue"
-            Margin="326,46,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="{x:Null}"
-            Content="Bienvenue sur "
-            FontFamily="Rubik"
-            FontSize="26"
-            FontWeight="Bold"
-            Foreground="#FF016BB7" />
-        <Image
-            Margin="533,46,148,356"
-            Source="/img/pilot.png"
-            Stretch="Fill" />
+
+        <StackPanel
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <ContentControl
+                x:Name="MainContent"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" />
+
+        </StackPanel>
     </Grid>
 </Window>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SAE_PILOT.View.UserControls
 {
     /// <summary>
-    /// Logique d'interaction pour UCRevendeurs.xaml
+    /// Logique d'interaction pour UCProduit.xaml
     /// </summary>
-    public partial class UCRevendeurs : UserControl
+    public partial class UCProduit : UserControl
     {
-        public UCRevendeurs()
+        public UCProduit()
         {
             InitializeComponent();
         }
