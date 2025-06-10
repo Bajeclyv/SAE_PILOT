@@ -6,23 +6,24 @@
     xmlns:local="clr-namespace:SAE_PILOT.View.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="450"
-    d:DesignWidth="550     "
+    d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
         <Label
             x:Name="labActionRevendeur"
-            Margin="102,22,0,0"
+            Margin="28,14,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Que souhaitez vous faire ?"
+            Content="Gestion des revendeurs"
             FontFamily="Rubik"
             FontSize="26"
             FontWeight="Bold"
             Foreground="#FF19459A" />
         <Button
             x:Name="butCreerRevendeur"
-            Width="36"
-            Margin="114,406,0,0"
+            Width="30"
+            Height="30"
+            Margin="28,299,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -30,23 +31,27 @@
             Content="&#xE710;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
+            RenderTransformOrigin="0.534,0.038"
             ToolTip="Ajouter" />
         <Button
             x:Name="butModifierRevendeur"
-            Width="54"
-            Margin="0,406,0,0"
-            HorizontalAlignment="Center"
+            Width="30"
+            Height="30"
+            Margin="190,299,0,0"
+            HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
             Content="&#xE70F;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
+            RenderTransformOrigin="0.408,-0.057"
             ToolTip="Modifier" />
         <Button
             x:Name="butSupprimerRevendeur"
-            Width="67"
-            Margin="384,406,0,0"
+            Width="30"
+            Height="30"
+            Margin="349,299,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -55,6 +60,5 @@
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             ToolTip="Supprimer" />
-
     </Grid>
 </UserControl>

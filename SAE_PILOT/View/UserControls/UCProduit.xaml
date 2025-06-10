@@ -8,5 +8,57 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <Label
+            x:Name="labActionProduit"
+            Margin="28,22,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Gestion des produits"
+            FontFamily="Rubik"
+            FontSize="26"
+            FontWeight="Bold"
+            Foreground="#FF19459A" />
+        <Button
+            x:Name="butCreerProduit"
+            Width="30"
+            Height="30"
+            Margin="28,299,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF19459A"
+            BorderBrush="{x:Null}"
+            Content="&#xE710;"
+            FontFamily="Segoe MDL2 Assets"
+            Foreground="#FFF8F6F6"
+            RenderTransformOrigin="0.534,0.038"
+            ToolTip="Ajouter" />
+        <Button
+            x:Name="butModifierProduit"
+            Width="30"
+            Height="30"
+            Margin="204,299,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF19459A"
+            BorderBrush="{x:Null}"
+            Content="&#xE70F;"
+            FontFamily="Segoe MDL2 Assets"
+            Foreground="#FFF8F6F6"
+            RenderTransformOrigin="0.408,-0.057"
+            ToolTip="Modifier" />
+        <Button
+            x:Name="butSupprimerProduit"
+            Width="30"
+            Height="30"
+            Margin="349,299,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF19459A"
+            BorderBrush="{x:Null}"
+            Content="&#xE74D;"
+            FontFamily="Segoe MDL2 Assets"
+            Foreground="#FFF8F6F6"
+            ToolTip="Supprimer" />
+    </Grid>
 </UserControl>
