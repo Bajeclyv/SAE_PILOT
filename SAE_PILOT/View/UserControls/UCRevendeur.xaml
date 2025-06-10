@@ -27,8 +27,10 @@
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
-            Content="Créer"
-            Foreground="#FFF8F6F6" />
+            Content="&#xE710;"
+            FontFamily="Segoe MDL2 Assets"
+            Foreground="#FFF8F6F6"
+            ToolTip="Ajouter" />
         <Button
             x:Name="butModifierRevendeur"
             Width="54"
@@ -37,8 +39,10 @@
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
-            Content="Modifier"
-            Foreground="#FFF8F6F6" />
+            Content="&#xE70F;"
+            FontFamily="Segoe MDL2 Assets"
+            Foreground="#FFF8F6F6"
+            ToolTip="Modifier" />
         <Button
             x:Name="butSupprimerRevendeur"
             Width="67"
@@ -47,8 +51,10 @@
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
-            Content="Supprimer"
-            Foreground="#FFF8F6F6" />
+            Content="&#xE74D;"
+            FontFamily="Segoe MDL2 Assets"
+            Foreground="#FFF8F6F6"
+            ToolTip="Supprimer" />
 
     </Grid>
 </UserControl>
