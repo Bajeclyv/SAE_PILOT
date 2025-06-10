@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TD3_BindingBDPension.Model;
 
 namespace SAE_PILOT.Model
 {
-    public class Commande
+    public class Commande : ICrud<Commande>
     {
         private int numCommande;
         private Employe unEmploye;
@@ -133,6 +136,50 @@ namespace SAE_PILOT.Model
         public void SaisirDateLivraison (DateTime date)
         {
             this.DateLivraison = date;
+        }
+
+        // int numCommande, Employe unEmploye, ModeTransport unTransport, Revendeur unRevendeur, DateTime dateCommande
+        public List<Commande> FindAll()
+        {
+            List<Commande> lesCommandes = new List<Commande>();
+            
+            /*using (NpgsqlCommand cmdSelect = new NpgsqlCommand("" +
+                "SELECT *" +
+                "FROM commande" +
+                "   JOIN"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                    lesCommandes.Add(new Commande((Int32)dr["numcommande"],
+                        new Employe()
+                    ));
+            }*/
+            return lesCommandes;
+        }
+
+        public int Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Commande> FindBySelection(string criteres)
+        {
+            throw new NotImplementedException();
         }
     }
 }

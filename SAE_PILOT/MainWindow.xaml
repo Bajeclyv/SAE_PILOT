@@ -33,7 +33,7 @@
             <Button x:Name="btnNavRevendeurs" Content="Revendeurs" />
         </StackPanel>
         <Grid Grid.Row="1">
-            <local:UCSynthese />
+            <local:UCRevendeurs />
         </Grid>
     </Grid>
 </Window>
