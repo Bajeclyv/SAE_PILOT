@@ -11,17 +11,17 @@ namespace SAE_PILOT.Model
 {
     public class Revendeur : ICrud<Revendeur>
     {
-        private int numReveneur;
+        private int numRevendeur;
         private string raisonSociale;
         private string adresseRue;
         private string adresseCP;
         private string adresseVille;
 
         public Revendeur () { }
-        public Revendeur(int numReveneur, string raisonSociale, 
+        public Revendeur(int numRevendeur, string raisonSociale, 
             string adresseRue, string adresseCP, string adresseVille)
         {
-            this.NumReveneur = numReveneur;
+            this.NumRevendeur = numRevendeur;
             this.RaisonSociale = raisonSociale;
             this.AdresseRue = adresseRue;
             this.AdresseCP = adresseCP;
@@ -36,16 +36,16 @@ namespace SAE_PILOT.Model
             this.AdresseVille = adresseVille;
         }
 
-        public int NumReveneur
+        public int NumRevendeur
         {
             get
             {
-                return this.numReveneur;
+                return this.numRevendeur;
             }
 
             set
             {
-                this.numReveneur = value;
+                this.numRevendeur = value;
             }
         }
 
@@ -101,16 +101,14 @@ namespace SAE_PILOT.Model
             }
         }
         /*
+            Colonne	Type	NOT NULL	Défaut	Contraintes	Actions	Commentaire
+            numrevendeur
+            raisonsociale
+            adresserue
+            adressecp
+            adresseville
          
-         
-Colonne	Type	NOT NULL	Défaut	Contraintes	Actions	Commentaire
-numrevendeur
-raisonsociale
-adresserue
-adressecp
-adresseville
-         
-         */
+                     */
         public List<Revendeur> FindAll()
         {
             List<Revendeur> lesRevendeurs = new List<Revendeur>();
@@ -139,7 +137,7 @@ adresseville
                 cmdInsert.Parameters.AddWithValue("adresseville", this.AdresseVille);
                 nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
             }
-            this.NumReveneur = nb;
+            this.NumRevendeur = nb;
             return nb;
         }
 
@@ -147,7 +145,7 @@ adresseville
         {
             using (var cmdSelect = new NpgsqlCommand("SELECT * FROM revendeur WHERE numrevendeur = @numrevendeur"))
             {
-                cmdSelect.Parameters.AddWithValue("numrevendeur", this.NumReveneur);
+                cmdSelect.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 this.RaisonSociale = (String)dt.Rows[0]["raisonsociale"];
                 this.AdresseRue = (String)dt.Rows[0]["adresserue"];
@@ -160,7 +158,7 @@ adresseville
         {
             using (var cmdUpdate = new NpgsqlCommand("UPDATE revendeur SET raisonsociale=@raisonsociale, adresserue=@adresserue, adressecp=@adressecp, adresseville=@adresseville WHERE numrevendeur=@numrevendeur"))
             {
-                cmdUpdate.Parameters.AddWithValue("numrevendeur", this.NumReveneur);
+                cmdUpdate.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
                 cmdUpdate.Parameters.AddWithValue("raisonsociale", this.RaisonSociale);
                 cmdUpdate.Parameters.AddWithValue("adresserue", this.AdresseRue);
                 cmdUpdate.Parameters.AddWithValue("adressecp", this.AdresseCP);
@@ -171,7 +169,11 @@ adresseville
 
         public int Delete()
         {
-            throw new NotImplementedException();
+            using (var cmdUpdate = new NpgsqlCommand("delete from revendeur where numrevendeur = @numrevendeur;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("id", this.NumRevendeur);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
         }
 
         public List<Revendeur> FindBySelection(string criteres)

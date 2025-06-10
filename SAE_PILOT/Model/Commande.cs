@@ -165,7 +165,7 @@ namespace SAE_PILOT.Model
             {
                 cmd.Parameters.AddWithValue("numemploye", this.UnEmploye.NumEmploye);
                 cmd.Parameters.AddWithValue("numtransport", this.UnTransport.NumTransport);
-                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumReveneur);
+                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumRevendeur);
                 cmd.Parameters.AddWithValue("datecommande", this.DateCommande.ToShortDateString());
                 nb = DataAccess.Instance.ExecuteInsert(cmd);
             }
@@ -181,7 +181,7 @@ namespace SAE_PILOT.Model
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 this.UnEmploye.NumEmploye = (int)dt.Rows[0]["numemploye"];
                 this.UnTransport.NumTransport = (int)dt.Rows[0]["numtransport"];
-                this.UnRevendeur.NumReveneur = (int)dt.Rows[0]["numrevendeur"];
+                this.UnRevendeur.NumRevendeur = (int)dt.Rows[0]["numrevendeur"];
                 this.DateCommande = DateTime.Parse((string)dt.Rows[0]["datecommande"]);
                 this.DateLivraison = DateTime.Parse((string)dt.Rows[0]["datelivraison"]);
             }
@@ -193,7 +193,7 @@ namespace SAE_PILOT.Model
             {
                 cmd.Parameters.AddWithValue("numemploye", this.UnEmploye.NumEmploye);
                 cmd.Parameters.AddWithValue("numtransport", this.UnTransport.NumTransport);
-                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumReveneur);
+                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumRevendeur);
                 cmd.Parameters.AddWithValue("datecommande", this.DateCommande.ToShortDateString());
                 return DataAccess.Instance.ExecuteSet(cmd);
             }
