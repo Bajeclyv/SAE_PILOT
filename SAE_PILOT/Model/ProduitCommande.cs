@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TD3_BindingBDPension.Model;
 
 namespace SAE_PILOT.Model
 {
-    public class ProduitCommande
+    public class ProduitCommande : ICrud<ProduitCommande>
     {
         private Commande uneCommande;
         private Produit unProduit;
@@ -18,13 +21,10 @@ namespace SAE_PILOT.Model
             this.UneCommande = uneCommande;
             this.UnProduit = unProduit;
             this.QteCommande = qteCommande;
-            //this.Prix = prix;
         }
-        public ProduitCommande(Produit unProduit, int qteCommande, double prix)
+        public ProduitCommande(int qteCommande, double prix)
         {
-            this.UnProduit = unProduit;
             this.QteCommande = qteCommande;
-            //this.Prix = prix;
         }
 
         public Commande UneCommande
@@ -70,8 +70,39 @@ namespace SAE_PILOT.Model
         {
             get
             {
-                return 0;//UnProduit.PrixVente * QteCommande;
+                return UnProduit.PrixVente * QteCommande;
             }
+        }
+
+        public int Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ProduitCommande> FindAll()
+        {
+            //List<ProduitCommande> lesProduitsCommande = new List<ProduitCommande>();
+            throw new NotImplementedException();
+        }
+
+        public List<ProduitCommande> FindBySelection(string criteres)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -120,7 +120,7 @@ namespace SAE_PILOT.Model
                         (String)dr["raisonsociale"],
                         (String)dr["adresserue"],
                         (String)dr["adressecp"],
-                        (String)dr["adresserue"]
+                        (String)dr["adresseville"]
                     ));
             }
             return lesRevendeurs;

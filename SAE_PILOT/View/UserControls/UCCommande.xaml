@@ -79,6 +79,14 @@
                     Width="*"
                     Binding="{Binding UnRevendeur.NumRevendeur, ValidatesOnExceptions=true}"
                     Header="Revendeur" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding DateCommande, ValidatesOnExceptions=true}"
+                    Header="Date commande" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding DateLivraison, ValidatesOnExceptions=true}"
+                    Header="Date livraison" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
