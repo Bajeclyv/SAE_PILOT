@@ -25,9 +25,8 @@ namespace SAE_PILOT.View.UserControls
         ObservableCollection<Revendeur> LesRevendeurs;
         public UCRevendeur()
         {
-            this.LesRevendeurs = new ObservableCollection<Revendeur>(new Revendeur().FindAll());
-            this.DataContext = this;
             InitializeComponent();
+            this.DataContext = new GestionRevendeur();
         }
 
         private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)

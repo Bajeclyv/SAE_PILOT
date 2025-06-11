@@ -60,5 +60,42 @@
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             ToolTip="Supprimer" />
+        <DataGrid
+            Height="200"
+            Margin="28,98,29,152"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesProduits}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding CodeProduit, ValidatesOnExceptions=true}"
+                    Header="Code Produit" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding NomProduit, ValidatesOnExceptions=true}"
+                    Header="Nom Produit" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding PrixVente, ValidatesOnExceptions=true}"
+                    Header="Prix vente" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding LeType.LibelleType, ValidatesOnExceptions=true}"
+                    Header="Type" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding LeTypePointe.LibelleTypePointe, ValidatesOnExceptions=true}"
+                    Header="Type pointe" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding QteStock, ValidatesOnExceptions=true}"
+                    Header="Quantité en stock" />
+                <DataGridCheckBoxColumn
+                    Width="*"
+                    Binding="{Binding Disponible, ValidatesOnExceptions=true}"
+                    Header="Disponible" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

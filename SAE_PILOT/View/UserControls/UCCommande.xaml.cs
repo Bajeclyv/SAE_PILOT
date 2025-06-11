@@ -24,6 +24,7 @@ namespace SAE_PILOT.View.UserControls
         public UCCommande()
         {
             InitializeComponent();
+            this.DataContext = new GestionCommande();
         }
 
         private void btnCreerCommande_Click(object sender, RoutedEventArgs e)

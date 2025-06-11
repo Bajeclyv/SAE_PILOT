@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_PILOT.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace SAE_PILOT.View.UserControls
         public UCProduit()
         {
             InitializeComponent();
+            this.DataContext = new GestionProduit();
         }
     }
 }

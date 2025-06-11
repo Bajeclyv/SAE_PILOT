@@ -60,5 +60,26 @@
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             ToolTip="Supprimer" />
+        <DataGrid
+            Height="200"
+            Margin="28,98,29,152"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding LesCommandes}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding UnEmploye.NumEmploye, ValidatesOnExceptions=true}"
+                    Header="Employé" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding UnTransport, ValidatesOnExceptions=true}"
+                    Header="Transport" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding UnRevendeur.NumRevendeur, ValidatesOnExceptions=true}"
+                    Header="Revendeur" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
