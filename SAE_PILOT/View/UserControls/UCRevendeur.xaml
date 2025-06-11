@@ -11,7 +11,7 @@
     <Grid>
         <Label
             x:Name="labActionRevendeur"
-            Margin="28,10,0,0"
+            Margin="20,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Gestion des revendeurs"
@@ -23,11 +23,12 @@
             x:Name="butCreerRevendeur"
             Width="30"
             Height="30"
-            Margin="28,327,0,0"
+            Margin="28,346,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
+            Click="butCreerRevendeur_Click"
             Content="&#xE710;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6" />
@@ -35,11 +36,12 @@
             x:Name="butModifierRevendeur"
             Width="30"
             Height="30"
-            Margin="190,327,0,0"
+            Margin="190,346,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
+            Click="butModifierRevendeur_Click"
             Content="&#xE70F;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
@@ -49,7 +51,7 @@
             x:Name="butSupprimerRevendeur"
             Width="30"
             Height="30"
-            Margin="349,327,0,0"
+            Margin="349,346,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -61,7 +63,7 @@
         <DataGrid
             x:Name="dgRevendeur"
             Height="200"
-            Margin="28,98,29,152"
+            Margin="28,117,29,133"
             AutoGenerateColumns="False"
             BorderBrush="#FF19459A"
             IsReadOnly="True"
@@ -88,29 +90,50 @@
         <TextBox
             x:Name="txtSociale"
             Width="120"
-            Margin="28,60,0,0"
+            Margin="28,79,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Foreground="Gray"
-            Text="Raison sociale"
+            Text=""
+            TextChanged="txtRevendeur_TextChanged"
             TextWrapping="Wrap" />
         <TextBox
             x:Name="txtCPRevendeur"
             Width="120"
-            Margin="210,60,0,0"
+            Margin="210,79,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Foreground="Gray"
-            Text="Code postal"
+            Text=""
+            TextChanged="txtRevendeur_TextChanged"
             TextWrapping="Wrap" />
         <TextBox
             x:Name="txtVilleRevendeur"
             Width="120"
-            Margin="400,60,0,0"
+            Margin="400,79,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Foreground="Gray"
-            Text="Ville"
+            Text=""
+            TextChanged="txtRevendeur_TextChanged"
             TextWrapping="Wrap" />
+        <Label
+            Margin="22,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Raison sociale"
+            Foreground="Gray" />
+        <Label
+            Margin="394,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Ville"
+            Foreground="Gray" />
+        <Label
+            Margin="205,56,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Code postal"
+            Foreground="Gray" />
     </Grid>
 </UserControl>
