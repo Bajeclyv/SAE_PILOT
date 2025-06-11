@@ -11,7 +11,7 @@
     <Grid>
         <Label
             x:Name="labActionRevendeur"
-            Margin="28,42,0,0"
+            Margin="28,10,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Content="Gestion des revendeurs"
@@ -59,9 +59,11 @@
             Foreground="#FFF8F6F6"
             ToolTip="Supprimer" />
         <DataGrid
+            x:Name="dgRevendeur"
             Height="200"
             Margin="28,98,29,152"
             AutoGenerateColumns="False"
+            BorderBrush="#FF19459A"
             IsReadOnly="True"
             ItemsSource="{Binding LesRevendeurs}">
             <DataGrid.Columns>
@@ -83,5 +85,32 @@
                     Header="Ville" />
             </DataGrid.Columns>
         </DataGrid>
+        <TextBox
+            x:Name="txtSociale"
+            Width="120"
+            Margin="28,60,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Foreground="Gray"
+            Text="Raison sociale"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="txtCPRevendeur"
+            Width="120"
+            Margin="210,60,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Foreground="Gray"
+            Text="Code postal"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="txtVilleRevendeur"
+            Width="120"
+            Margin="400,60,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Foreground="Gray"
+            Text="Ville"
+            TextWrapping="Wrap" />
     </Grid>
 </UserControl>

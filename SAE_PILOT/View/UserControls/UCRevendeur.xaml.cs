@@ -27,7 +27,16 @@ namespace SAE_PILOT.View.UserControls
         {
             InitializeComponent();
             this.DataContext = new GestionRevendeur();
+            //dgRevendeur.Items.Filter = RechercherSocialeRevendeur;
         }
+
+        /*private bool RechercherSocialeRevendeur(object obj)
+        {
+            if (String.IsNullOrEmpty(txtSociale.Text &&))
+                return true;
+            Chien unChien = obj as Chien;
+            return (unChien.Nom.StartsWith(textMotClefChien.Text, StringComparison.OrdinalIgnoreCase) || unChien.Maitre.StartsWith(textMotClefChien.Text, StringComparison.OrdinalIgnoreCase));
+        }*/
 
         private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)
         {
