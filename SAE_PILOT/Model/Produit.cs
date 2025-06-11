@@ -188,7 +188,21 @@ namespace SAE_PILOT.Model
 
         public List<Produit> FindAll()
         {
-            throw new NotImplementedException();
+            List<Produit> lesProduits = new List<Produit>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from produit join typepointe on produit.numtypepointe = typepointe.numtypepointe join type on produit.numtype = type.numtype join categorie on type.numcategorie = categorie.numcategorie;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                    lesProduits.Add(new Produit((Int32)dr["numproduit"],
+                        new TypePointe((int)dr["typepointe.numtypepointe"], (EpaisseurPointe)dr["typepointe.libelletypepointe"]),
+                        new Type((int)dr["type.numtype"], new Categorie((int)dr["categorie.numcategorie"], (CategorieProduit)dr["categorie.libellecategorie"]), (string)dr["libelletype"]),
+                        (string)dr["codeproduit"],
+                        (string)dr["nomproduit"],
+                        (double)dr["prixvente"],
+                        (int)dr["quantitestock"]
+                    ));
+            }
+            return lesProduits;
         }
 
         public List<Produit> FindBySelection(string criteres)
