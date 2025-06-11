@@ -12,9 +12,9 @@ namespace SAE_PILOT.Model
     public class Commande : ICrud<Commande>
     {
         private int numCommande;
-        private Employe unEmploye;
-        private ModeTransport unTransport;
-        private Revendeur unRevendeur;
+        private Employe unEmploye; // int
+        private ModeTransport unTransport; // int
+        private Revendeur unRevendeur; // int
         private DateTime dateCommande;
         private DateTime? dateLivraison;
         private double prixTotal;
