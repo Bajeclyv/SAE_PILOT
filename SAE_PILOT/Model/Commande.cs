@@ -19,7 +19,7 @@ namespace SAE_PILOT.Model
         private DateTime? dateLivraison;
         private double prixTotal;
 
-        private GestionProduit detail;
+        private GestionDetails detail;
 
         public Commande () { }
         public Commande(int numCommande, Employe unEmploye, ModeTransport unTransport,
@@ -111,7 +111,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public GestionProduit Detail
+        public GestionDetails Detail
         {
             get
             {
@@ -124,26 +124,17 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public double PrixTotal
-        {
-            get
-            {
-                // Récuperer liste des produits d'une commande et faire la somme //
-                // Somme  des prix pour laquelle les id de commande sont identiques //
-                return Math.Round(Detail.QteCommande * Detail.Prix, 2); 
-            }
-        }
-
         public double PrixTotal1
         {
             get
             {
-                return this.prixTotal;
-            }
-
-            set
-            {
-                this.prixTotal = value;
+                double total = 0;
+                foreach (ProduitCommande pc in this.Detail.LesDetails)
+                    if(pc.UneCommande.NumCommande == this.NumCommande)
+                    {
+                        total += pc.Prix;
+                    }
+                return total;
             }
         }
 

@@ -9,6 +9,7 @@
     Title="WindowRevendeur"
     Width="800"
     Height="450"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
         <model:Revendeur x:Key="NouveauRevendeur" x:Name="NouveauRevendeur" />

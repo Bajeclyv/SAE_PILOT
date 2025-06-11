@@ -13,7 +13,7 @@ namespace SAE_PILOT.Model
 
         public GestionDetails()
         {
-            this.LesDetails = new ObservableCollection<ProduitCommande>(new ProduitCommande().FindAll());
+            //this.LesDetails = new ObservableCollection<ProduitCommande>(new ProduitCommande().FindAll());
         }
 
         public ObservableCollection<ProduitCommande> LesDetails
