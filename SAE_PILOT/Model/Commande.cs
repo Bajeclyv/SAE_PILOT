@@ -12,9 +12,9 @@ namespace SAE_PILOT.Model
     public class Commande : ICrud<Commande>
     {
         private int numCommande;
-        private Employe unEmploye; // int
-        private ModeTransport unTransport; // int
-        private Revendeur unRevendeur; // int
+        private int numEmploye; 
+        private int numTransport; 
+        private int numRevendeur; 
         private DateTime dateCommande;
         private DateTime? dateLivraison;
         private double prixTotal;
@@ -22,15 +22,25 @@ namespace SAE_PILOT.Model
         private GestionDetails detail;
 
         public Commande () { }
-        public Commande(int numCommande, Employe unEmploye, ModeTransport unTransport,
-            Revendeur unRevendeur, DateTime dateCommande)
+        public Commande(int numCommande, int numEmploye, int numTransport,
+            int numRevendeur, DateTime dateCommande)
         {
             this.NumCommande = numCommande;
-            this.UnEmploye = unEmploye;
-            this.UnTransport = unTransport;
-            this.UnRevendeur = unRevendeur;
+            this.NumEmploye = numEmploye;
+            this.NumTransport = numTransport;
+            this.NumRevendeur = numRevendeur;
             this.DateCommande = dateCommande;
             this.DateLivraison = null;
+        }
+        public Commande(int numCommande, int numEmploye, int numTransport,
+                    int numRevendeur, DateTime dateCommande, DateTime dateLivraison)
+        {
+            this.NumCommande = numCommande;
+            this.NumEmploye = numEmploye;
+            this.NumTransport = numTransport;
+            this.NumRevendeur = numRevendeur;
+            this.DateCommande = dateCommande;
+            this.DateLivraison = dateLivraison;
         }
 
         public int NumCommande
@@ -46,42 +56,42 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public Employe UnEmploye
+        public int NumEmploye
         {
             get
             {
-                return this.unEmploye;
+                return this.numEmploye;
             }
 
             set
             {
-                this.unEmploye = value;
+                this.numEmploye = value;
             }
         }
 
-        public ModeTransport UnTransport
+        public int NumTransport
         {
             get
             {
-                return this.unTransport;
+                return this.numTransport;
             }
 
             set
             {
-                this.unTransport = value;
+                this.numTransport = value;
             }
         }
 
-        public Revendeur UnRevendeur
+        public int NumRevendeur
         {
             get
             {
-                return this.unRevendeur;
+                return this.numRevendeur;
             }
 
             set
             {
-                this.unRevendeur = value;
+                this.numRevendeur = value;
             }
         }
 
@@ -147,16 +157,17 @@ namespace SAE_PILOT.Model
         {
             List<Commande> lesCommandes = new List<Commande>();
             
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM commande JOIN employe ON commande.numemploye = employe.numemploye JOIN role ON employe.numrole = role.numrole JOIN revendeur ON commande.numrevendeur = revendeur.numrevendeur;"))
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM commande;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                     lesCommandes.Add(new Commande(
                         (Int32)dr["numcommande"],
-                        new Employe((Int32)dr["employe.numemploye"], new Role((int)dr["role.numrole"], (RoleEmploye)dr["libellerole"]), (string)dr["nom"], (string)dr["prenom"], (string)dr["password"], (string)dr["login"]),
-                        new ModeTransport((int)dr["modetransport.numtransport"], (Mode)dr["libelletransport"]),
-                        new Revendeur((int)dr["revendeur.numrevendeur"], (string)dr["raisonsociale"], (string)dr["adresserue"], (string)dr["adressecp"], (string)dr["adresseville"]),
-                        DateTime.Parse((string)dr["datecommande"])
+                        (Int32)dr["numemploye"],
+                        (Int32)dr["numtransport"],
+                        (Int32)dr["numrevendeur"],
+                        DateTime.Parse((string)dr["datecommande"]),
+                        DateTime.Parse((string)dr["datelivraison"])
                     ));
             }
             return lesCommandes;
@@ -168,9 +179,9 @@ namespace SAE_PILOT.Model
             int nb = 0;
             using (NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO commande (numemploye, numtransport, numrevendeur, datecommande) VALUES (@numemploye, @numtransport, @numrevendeur, @datecommande)"))
             {
-                cmd.Parameters.AddWithValue("numemploye", this.UnEmploye.NumEmploye);
-                cmd.Parameters.AddWithValue("numtransport", this.UnTransport.NumTransport);
-                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumRevendeur);
+                cmd.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                cmd.Parameters.AddWithValue("numtransport", this.NumTransport);
+                cmd.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
                 cmd.Parameters.AddWithValue("datecommande", this.DateCommande.ToShortDateString());
                 nb = DataAccess.Instance.ExecuteInsert(cmd);
             }
@@ -184,9 +195,9 @@ namespace SAE_PILOT.Model
             {
                 cmdSelect.Parameters.AddWithValue("numcommande", this.NumCommande);
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-                this.UnEmploye.NumEmploye = (int)dt.Rows[0]["numemploye"];
-                this.UnTransport.NumTransport = (int)dt.Rows[0]["numtransport"];
-                this.UnRevendeur.NumRevendeur = (int)dt.Rows[0]["numrevendeur"];
+                this.NumEmploye = (int)dt.Rows[0]["numemploye"];
+                this.NumTransport = (int)dt.Rows[0]["numtransport"];
+                this.NumRevendeur = (int)dt.Rows[0]["numrevendeur"];
                 this.DateCommande = DateTime.Parse((string)dt.Rows[0]["datecommande"]);
                 this.DateLivraison = DateTime.Parse((string)dt.Rows[0]["datelivraison"]);
             }
@@ -196,9 +207,9 @@ namespace SAE_PILOT.Model
         {
             using (NpgsqlCommand cmd = new NpgsqlCommand("UPDATE commande SET numemploye=@numemploye, numtransport=@numtransport, numrevendeur=@numrevendeur, datecommande=@datecommande WHERE numcommande = @numcommande;"))
             {
-                cmd.Parameters.AddWithValue("numemploye", this.UnEmploye.NumEmploye);
-                cmd.Parameters.AddWithValue("numtransport", this.UnTransport.NumTransport);
-                cmd.Parameters.AddWithValue("numrevendeur", this.UnRevendeur.NumRevendeur);
+                cmd.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                cmd.Parameters.AddWithValue("numtransport", this.NumTransport);
+                cmd.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
                 cmd.Parameters.AddWithValue("datecommande", this.DateCommande.ToShortDateString());
                 return DataAccess.Instance.ExecuteSet(cmd);
             }

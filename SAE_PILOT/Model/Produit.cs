@@ -12,8 +12,8 @@ namespace SAE_PILOT.Model
     public class Produit : ICrud<Produit>
     {
         private int numProduit;
-        private TypePointe leTypePointe;
-        private Type leType;
+        private int numTypePointe; 
+        private int numType; 
         private string codeProduit;
         private string nomProduit;
         private double prixVente;
@@ -21,12 +21,12 @@ namespace SAE_PILOT.Model
         private bool disponible;
 
         public Produit () { }
-        public Produit(int numProduit, TypePointe leTypePointe, Type leType, string codeProduit, string nomProduit, 
+        public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit, 
             double prixVente, int qteStock)
         {
             this.NumProduit = numProduit;
-            this.LeTypePointe = leTypePointe;
-            this.LeType = leType;
+            this.NumTypePointe = numTypePointe;
+            this.NumType = numType;
             this.CodeProduit = codeProduit;
             this.NomProduit = nomProduit;
             this.PrixVente = prixVente;
@@ -34,11 +34,11 @@ namespace SAE_PILOT.Model
             this.Disponible = true;
         }
 
-        public Produit(TypePointe leTypePointe, Type leType, string codeProduit, string nomProduit,
+        public Produit(int numTypePointe, int numType, string codeProduit, string nomProduit,
             double prixVente, int qteStock)
         {
-            this.LeTypePointe = leTypePointe;
-            this.LeType = leType;
+            this.NumTypePointe = numTypePointe;
+            this.NumType = numType;
             this.CodeProduit = codeProduit;
             this.NomProduit = nomProduit;
             this.PrixVente = prixVente;
@@ -59,29 +59,29 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public TypePointe LeTypePointe
+        public int NumTypePointe
         {
             get
             {
-                return this.leTypePointe;
+                return this.numTypePointe;
             }
 
             set
             {
-                this.leTypePointe = value;
+                this.numTypePointe = value;
             }
         }
 
-        public Type LeType
+        public int NumType
         {
             get
             {
-                return this.leType;
+                return this.numType;
             }
 
             set
             {
-                this.leType = value;
+                this.numType = value;
             }
         }
 
@@ -188,7 +188,7 @@ namespace SAE_PILOT.Model
 
         public List<Produit> FindAll()
         {
-            List<Produit> lesProduits = new List<Produit>();
+            /*List<Produit> lesProduits = new List<Produit>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from produit join typepointe on produit.numtypepointe = typepointe.numtypepointe join type on produit.numtype = type.numtype join categorie on type.numcategorie = categorie.numcategorie;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
@@ -202,7 +202,9 @@ namespace SAE_PILOT.Model
                         (int)dr["quantitestock"]
                     ));
             }
-            return lesProduits;
+            return lesProduits;*/
+            throw new NotImplementedException();
+
         }
 
         public List<Produit> FindBySelection(string criteres)

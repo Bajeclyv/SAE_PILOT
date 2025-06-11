@@ -11,8 +11,8 @@ namespace SAE_PILOT.Model
 {
     public class ProduitCommande : ICrud<ProduitCommande>
     {
-        private Commande uneCommande;
-        private Produit unProduit;
+        private Commande uneCommande; // int
+        private Produit unProduit; // int
         private int qteCommande;
         private double prix;
 

@@ -12,7 +12,7 @@ namespace SAE_PILOT.Model
     public class Employe : ICrud<Employe>
     {
         private int numEmploye;
-        private Role unRole;
+        private int numRole; 
         private string nom;
         private string prenom;
         private string password;
@@ -29,9 +29,9 @@ namespace SAE_PILOT.Model
             this.Password = password;
             this.Login = login;
         }
-        public Employe(Role unRole, string nom, string prenom, string password, string login)
+        public Employe(int numRole, string nom, string prenom, string password, string login)
         {
-            this.UnRole = unRole;
+            this.NumRole = numRole;
             this.Nom = nom;
             this.Prenom = prenom;
             this.Password = password;
@@ -51,16 +51,16 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public Role UnRole
+        public int NumRole
         {
             get
             {
-                return this.unRole;
+                return this.numRole;
             }
 
             set
             {
-                this.unRole = value;
+                this.numRole = value;
             }
         }
 
@@ -138,17 +138,19 @@ namespace SAE_PILOT.Model
 
         public List<Employe> FindAll()
         {
-            List<Employe> lesEmployes = new List<Employe>();
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM employe JOIN role"))
+            /*List<Employe> lesEmployes = new List<Employe>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM employe"))
             {
-                /*DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                     lesEmployes.Add(new Employe(
                         (int)dr["numemploye"],
-                        new Role()));*/
+                        new Role()));
             }
 
-            return lesEmployes;
+            return lesEmployes;*/
+            throw new NotImplementedException();
+
         }
 
         public List<Employe> FindBySelection(string criteres)

@@ -9,7 +9,7 @@ namespace SAE_PILOT.Model
     public class Type
     {
         private int numType;
-        private Categorie uneCategorie;
+        private Categorie uneCategorie; // int
         private string libelleType;
 
         public Type () { }
