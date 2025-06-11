@@ -24,6 +24,8 @@ namespace SAE_PILOT.View
 
         public WindowRevendeur()
         {
+            this.LeRevendeur = new Revendeur();
+            this.DataContext = this.LeRevendeur;
             InitializeComponent();
         }
 

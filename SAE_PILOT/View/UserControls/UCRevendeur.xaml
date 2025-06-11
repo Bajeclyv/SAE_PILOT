@@ -8,7 +8,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid>
+    <StackPanel>
         <Label
             x:Name="labActionRevendeur"
             Margin="28,14,0,0"
@@ -19,44 +19,56 @@
             FontSize="26"
             FontWeight="Bold"
             Foreground="#FF19459A" />
-        <Button
-            x:Name="butCreerRevendeur"
-            Width="30"
-            Height="30"
-            Margin="28,299,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#FF19459A"
-            BorderBrush="{x:Null}"
-            Content="&#xE710;"
-            FontFamily="Segoe MDL2 Assets"
-            Foreground="#FFF8F6F6"
-        <Button
-            x:Name="butModifierRevendeur"
-            Width="30"
-            Height="30"
-            Margin="190,299,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#FF19459A"
-            BorderBrush="{x:Null}"
-            Content="&#xE70F;"
-            FontFamily="Segoe MDL2 Assets"
-            Foreground="#FFF8F6F6"
-            RenderTransformOrigin="0.408,-0.057"
-            ToolTip="Modifier" />
-        <Button
-            x:Name="butSupprimerRevendeur"
-            Width="30"
-            Height="30"
-            Margin="349,299,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="#FF19459A"
-            BorderBrush="{x:Null}"
-            Content="&#xE74D;"
-            FontFamily="Segoe MDL2 Assets"
-            Foreground="#FFF8F6F6"
-            ToolTip="Supprimer" />
-    </Grid>
+
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LesRevendeurs}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding RaisonSociale}" Header="Raison sociale" />
+                <DataGridTextColumn Binding="{Binding AdresseRue}" Header="Adresse" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid>
+
+            <Button
+                x:Name="butCreerRevendeur"
+                Width="30"
+                Height="30"
+                Margin="28,299,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FF19459A"
+                BorderBrush="{x:Null}"
+                Click="butCreerRevendeur_Click"
+                Content="&#xE710;"
+                FontFamily="Segoe MDL2 Assets"
+                Foreground="#FFF8F6F6" />
+            <Button
+                x:Name="butModifierRevendeur"
+                Width="30"
+                Height="30"
+                Margin="190,299,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FF19459A"
+                BorderBrush="{x:Null}"
+                Click="butModifierRevendeur_Click"
+                Content="&#xE70F;"
+                FontFamily="Segoe MDL2 Assets"
+                Foreground="#FFF8F6F6"
+                RenderTransformOrigin="0.408,-0.057"
+                ToolTip="Modifier" />
+            <Button
+                x:Name="butSupprimerRevendeur"
+                Width="30"
+                Height="30"
+                Margin="349,299,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FF19459A"
+                BorderBrush="{x:Null}"
+                Content="&#xE74D;"
+                FontFamily="Segoe MDL2 Assets"
+                Foreground="#FFF8F6F6"
+                ToolTip="Supprimer" />
+        </Grid>
+    </StackPanel>
 </UserControl>

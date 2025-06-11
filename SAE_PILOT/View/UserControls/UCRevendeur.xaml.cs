@@ -1,6 +1,7 @@
 ﻿using SAE_PILOT.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,30 @@ namespace SAE_PILOT.View.UserControls
     /// </summary>
     public partial class UCRevendeur : UserControl
     {
+        ObservableCollection<Revendeur> LesRevendeurs;
         public UCRevendeur()
         {
+            this.LesRevendeurs = new ObservableCollection<Revendeur>(new Revendeur().FindAll());
+            this.DataContext = this;
             InitializeComponent();
         }
 
         private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)
+        {
+            WindowRevendeur windowRevendeur = new WindowRevendeur();
+            windowRevendeur.ShowDialog();
+
+            if (windowRevendeur.DialogResult == true)
+            {
+                if (windowRevendeur.LeRevendeur is not null)
+                {
+                    Revendeur r = windowRevendeur.LeRevendeur;
+                    r.Create();
+                }
+            }
+        }
+
+        private void butModifierRevendeur_Click(object sender, RoutedEventArgs e)
         {
             WindowRevendeur windowRevendeur = new WindowRevendeur();
             windowRevendeur.ShowDialog();
