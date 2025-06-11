@@ -16,13 +16,13 @@ namespace SAE_PILOT.Model
         private int numType; 
         private string codeProduit;
         private string nomProduit;
-        private double prixVente;
+        private decimal prixVente;
         private int qteStock;
         private bool disponible;
 
         public Produit () { }
         public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit, 
-            double prixVente, int qteStock)
+            decimal prixVente, int qteStock)
         {
             this.NumProduit = numProduit;
             this.NumTypePointe = numTypePointe;
@@ -35,7 +35,7 @@ namespace SAE_PILOT.Model
         }
 
         public Produit(int numTypePointe, int numType, string codeProduit, string nomProduit,
-            double prixVente, int qteStock)
+            decimal prixVente, int qteStock)
         {
             this.NumTypePointe = numTypePointe;
             this.NumType = numType;
@@ -46,7 +46,7 @@ namespace SAE_PILOT.Model
             this.Disponible = true;
         }
         public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit,
-            double prixVente, int qteStock, bool disponible)
+            decimal prixVente, int qteStock, bool disponible)
         {
             this.NumProduit = numProduit;
             this.NumTypePointe = numTypePointe;
@@ -58,7 +58,7 @@ namespace SAE_PILOT.Model
             this.Disponible = disponible;
         }
         public Produit(int numTypePointe, int numType, string codeProduit, string nomProduit,
-            double prixVente, int qteStock, bool disponible)
+            decimal prixVente, int qteStock, bool disponible)
         {
             this.NumTypePointe = numTypePointe;
             this.NumType = numType;
@@ -134,7 +134,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public double PrixVente
+        public decimal PrixVente
         {
             get
             {
@@ -221,7 +221,7 @@ namespace SAE_PILOT.Model
                         (Int32)dr["numtype"], 
                         (string)dr["codeproduit"],
                         (string)dr["nomproduit"],
-                        (double)dr["prixvente"],
+                        (decimal)dr["prixvente"],
                         (int)dr["quantitestock"],
                         (Boolean)dr["disponible"]
                     ));

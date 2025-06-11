@@ -81,11 +81,11 @@
                     Header="Prix vente" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding LeType.LibelleType, ValidatesOnExceptions=true}"
+                    Binding="{Binding NumType, ValidatesOnExceptions=true}"
                     Header="Type" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding LeTypePointe.LibelleTypePointe, ValidatesOnExceptions=true}"
+                    Binding="{Binding NumTypePointe, ValidatesOnExceptions=true}"
                     Header="Type pointe" />
                 <DataGridTextColumn
                     Width="*"

@@ -69,15 +69,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding UnEmploye.NumEmploye, ValidatesOnExceptions=true}"
+                    Binding="{Binding NumEmploye, ValidatesOnExceptions=true}"
                     Header="Employé" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding UnTransport, ValidatesOnExceptions=true}"
+                    Binding="{Binding NumTransport, ValidatesOnExceptions=true}"
                     Header="Transport" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding UnRevendeur.NumRevendeur, ValidatesOnExceptions=true}"
+                    Binding="{Binding NumRevendeur, ValidatesOnExceptions=true}"
                     Header="Revendeur" />
                 <DataGridTextColumn
                     Width="*"

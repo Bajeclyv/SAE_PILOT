@@ -140,7 +140,7 @@ namespace SAE_PILOT.Model
             {
                 double total = 0;
                 foreach (ProduitCommande pc in this.Detail.LesDetails)
-                    if(pc.UneCommande.NumCommande == this.NumCommande)
+                    if(pc.NumCommande == this.NumCommande)
                     {
                         total += pc.Prix;
                     }
@@ -166,8 +166,8 @@ namespace SAE_PILOT.Model
                         (Int32)dr["numemploye"],
                         (Int32)dr["numtransport"],
                         (Int32)dr["numrevendeur"],
-                        DateTime.Parse((string)dr["datecommande"]),
-                        DateTime.Parse((string)dr["datelivraison"])
+                        (DateTime)dr["datecommande"],
+                        (DateTime)dr["datelivraison"]
                     ));
             }
             return lesCommandes;

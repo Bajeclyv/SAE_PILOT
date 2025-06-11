@@ -20,10 +20,10 @@ namespace SAE_PILOT.Model
 
         // REVOIR LOGIN ET PASSWORD //
         public Employe () { }
-        public Employe(int numEmploye, Role unRole, string nom, string prenom, string password, string login)
+        public Employe(int numEmploye, int numRole, string nom, string prenom, string password, string login)
         {
             this.NumEmploye = numEmploye;
-            this.UnRole = unRole;
+            this.NumEmploye = numRole;
             this.Nom = nom;
             this.Prenom = prenom;
             this.Password = password;

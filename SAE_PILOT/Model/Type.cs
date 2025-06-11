@@ -19,9 +19,9 @@ namespace SAE_PILOT.Model
             this.NumCategorie = numCategorie;
             this.LibelleType = libelleType;
         }
-        public Type(Categorie uneCategorie, string libelleType)
+        public Type(int numCategorie, string libelleType)
         {
-            this.UneCategorie = uneCategorie;
+            this.NumCategorie = numCategorie;
             this.LibelleType = libelleType;
         }
 
