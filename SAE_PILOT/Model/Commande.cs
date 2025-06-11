@@ -173,7 +173,6 @@ namespace SAE_PILOT.Model
             return lesCommandes;
         }
 
-        // int numCommande, Employe unEmploye, ModeTransport unTransport, Revendeur unRevendeur, DateTime dateCommande
         public int Create()
         {
             int nb = 0;
@@ -191,7 +190,7 @@ namespace SAE_PILOT.Model
 
         public void Read()
         {
-            using (var cmdSelect = new NpgsqlCommand("SELECT * FROM commande JOIN employe ON commande.numemploye = employe.numemploye JOIN role ON employe.numrole = role.numrole JOIN revendeur ON commande.numrevendeur = revendeur.numrevendeur;"))
+            using (var cmdSelect = new NpgsqlCommand("SELECT * FROM commande;"))
             {
                 cmdSelect.Parameters.AddWithValue("numcommande", this.NumCommande);
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);

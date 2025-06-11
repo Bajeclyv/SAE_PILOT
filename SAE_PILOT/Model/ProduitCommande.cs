@@ -11,15 +11,15 @@ namespace SAE_PILOT.Model
 {
     public class ProduitCommande : ICrud<ProduitCommande>
     {
-        private Commande uneCommande; // int
-        private Produit unProduit; // int
+        private int numCommande; 
+        private int numProduit; 
         private int qteCommande;
         private double prix;
 
-        public ProduitCommande(Commande uneCommande, Produit unProduit, int qteCommande, double prix)
+        public ProduitCommande(int numCommande, int numProduit, int qteCommande, double prix)
         {
-            this.UneCommande = uneCommande;
-            this.UnProduit = unProduit;
+            this.NumCommande = numCommande;
+            this.NumProduit = numProduit;
             this.QteCommande = qteCommande;
         }
         public ProduitCommande(int qteCommande, double prix)
@@ -27,29 +27,29 @@ namespace SAE_PILOT.Model
             this.QteCommande = qteCommande;
         }
 
-        public Commande UneCommande
+        public int NumCommande
         {
             get
             {
-                return this.uneCommande;
+                return this.numCommande;
             }
 
             set
             {
-                this.uneCommande = value;
+                this.numCommande = value;
             }
         }
 
-        public Produit UnProduit
+        public int NumProduit
         {
             get
             {
-                return this.unProduit;
+                return this.numProduit;
             }
 
             set
             {
-                this.unProduit = value;
+                this.numProduit = value;
             }
         }
 
@@ -70,7 +70,8 @@ namespace SAE_PILOT.Model
         {
             get
             {
-                return UnProduit.PrixVente * QteCommande;
+                //return UnProduit.PrixVente * QteCommande;
+                return 1;
             }
         }
 
@@ -96,8 +97,20 @@ namespace SAE_PILOT.Model
 
         public List<ProduitCommande> FindAll()
         {
-            //List<ProduitCommande> lesProduitsCommande = new List<ProduitCommande>();
-            throw new NotImplementedException();
+            List<ProduitCommande> lesPCommande = new List<ProduitCommande>();
+
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM produitcommande;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                    lesPCommande.Add(new ProduitCommande(
+                        (Int32)dr["numcommande"],
+                        (Int32)dr["numproduit"],
+                        (Int32)dr["quantitecommande"],
+                        (double)dr["prix"])
+                    );
+            }
+            return lesPCommande;
         }
 
         public List<ProduitCommande> FindBySelection(string criteres)

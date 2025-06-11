@@ -9,14 +9,14 @@ namespace SAE_PILOT.Model
     public class Type
     {
         private int numType;
-        private Categorie uneCategorie; // int
+        private int numCategorie; 
         private string libelleType;
 
         public Type () { }
-        public Type(int numType, Categorie uneCategorie, string libelleType)
+        public Type(int numType, int numCategorie, string libelleType)
         {
             this.NumType = numType;
-            this.UneCategorie = uneCategorie;
+            this.NumCategorie = numCategorie;
             this.LibelleType = libelleType;
         }
         public Type(Categorie uneCategorie, string libelleType)
@@ -38,16 +38,16 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public Categorie UneCategorie
+        public int NumCategorie
         {
             get
             {
-                return this.uneCategorie;
+                return this.numCategorie;
             }
 
             set
             {
-                this.uneCategorie = value;
+                this.numCategorie = value;
             }
         }
 

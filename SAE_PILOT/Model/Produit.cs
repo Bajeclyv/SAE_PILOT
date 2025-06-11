@@ -45,6 +45,29 @@ namespace SAE_PILOT.Model
             this.QteStock = qteStock;
             this.Disponible = true;
         }
+        public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit,
+            double prixVente, int qteStock, bool disponible)
+        {
+            this.NumProduit = numProduit;
+            this.NumTypePointe = numTypePointe;
+            this.NumType = numType;
+            this.CodeProduit = codeProduit;
+            this.NomProduit = nomProduit;
+            this.PrixVente = prixVente;
+            this.QteStock = qteStock;
+            this.Disponible = disponible;
+        }
+        public Produit(int numTypePointe, int numType, string codeProduit, string nomProduit,
+            double prixVente, int qteStock, bool disponible)
+        {
+            this.NumTypePointe = numTypePointe;
+            this.NumType = numType;
+            this.CodeProduit = codeProduit;
+            this.NomProduit = nomProduit;
+            this.PrixVente = prixVente;
+            this.QteStock = qteStock;
+            this.Disponible = disponible;
+        }
 
         public int NumProduit
         {
@@ -162,12 +185,12 @@ namespace SAE_PILOT.Model
 
         public int Update()
         {
-            using (var cmdUpdate = new NpgsqlCommand("UPDATE produit SET numtypepointe=@letypepointe, numtype=@letype, codeproduit=@codeproduit, " +
+            using (var cmdUpdate = new NpgsqlCommand("UPDATE produit SET numtypepointe=@numtypepointe, numtype=@numtype, codeproduit=@codeproduit, " +
                "nomproduit=@nomproduit, prixvente=@prixvente, quantitestock=@qtestock, disponible=@disponible WHERE numproduit=@numproduit"))
             {
                 cmdUpdate.Parameters.AddWithValue("numproduit", this.NomProduit);
-                cmdUpdate.Parameters.AddWithValue("letypepointe", this.leTypePointe.NumTypePointe);
-                cmdUpdate.Parameters.AddWithValue("letype", this.LeType.NumType);
+                cmdUpdate.Parameters.AddWithValue("numtypepointe", this.NumTypePointe);
+                cmdUpdate.Parameters.AddWithValue("numtype", this.NumType);
                 cmdUpdate.Parameters.AddWithValue("codeproduit", this.CodeProduit);
                 cmdUpdate.Parameters.AddWithValue("nomproduit", this.NomProduit);
                 cmdUpdate.Parameters.AddWithValue("prixvente", this.PrixVente);
@@ -179,32 +202,31 @@ namespace SAE_PILOT.Model
 
         public int Delete()
         {
-            using (var cmdUpdate = new NpgsqlCommand("delete from produit  where numproduit = @numproduit;"))
+            using (var cmdUpdate = new NpgsqlCommand("delete from produit where numproduit = @numproduit;"))
             {
-                cmdUpdate.Parameters.AddWithValue("numproduit", this.NomProduit);
+                cmdUpdate.Parameters.AddWithValue("numproduit", this.NumProduit);
                 return DataAccess.Instance.ExecuteSet(cmdUpdate);
             }
         }
 
         public List<Produit> FindAll()
         {
-            /*List<Produit> lesProduits = new List<Produit>();
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from produit join typepointe on produit.numtypepointe = typepointe.numtypepointe join type on produit.numtype = type.numtype join categorie on type.numcategorie = categorie.numcategorie;"))
+            List<Produit> lesProduits = new List<Produit>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from produit;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                     lesProduits.Add(new Produit((Int32)dr["numproduit"],
-                        new TypePointe((int)dr["typepointe.numtypepointe"], (EpaisseurPointe)dr["typepointe.libelletypepointe"]),
-                        new Type((int)dr["type.numtype"], new Categorie((int)dr["categorie.numcategorie"], (CategorieProduit)dr["categorie.libellecategorie"]), (string)dr["libelletype"]),
+                        (Int32)dr["numtypepointe"], 
+                        (Int32)dr["numtype"], 
                         (string)dr["codeproduit"],
                         (string)dr["nomproduit"],
                         (double)dr["prixvente"],
-                        (int)dr["quantitestock"]
+                        (int)dr["quantitestock"],
+                        (Boolean)dr["disponible"]
                     ));
             }
-            return lesProduits;*/
-            throw new NotImplementedException();
-
+            return lesProduits;
         }
 
         public List<Produit> FindBySelection(string criteres)
