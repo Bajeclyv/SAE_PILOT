@@ -16,8 +16,8 @@ namespace SAE_PILOT.Model
         private int qteCommande;
         private double prix;
 
-        private Produit unProduit;
-
+        // Peut-être faire une liste observable des produits pour aller récupérer les infos ?
+        
         public ProduitCommande(int numCommande, int numProduit, int qteCommande, double prix)
         {
             this.NumCommande = numCommande;
@@ -68,11 +68,19 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public double Prix
+        public decimal Prix
         {
             get
             {
-                return 1;
+                decimal prix = 0;
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT prixvente FROM produit where numproduit=@numproduit;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numproduit", this.NumProduit);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    prix = (decimal)dt.Rows[0]["prixvente"] * this.QteCommande;
+                }
+                return Math.Round(prix, 2);
             }
         }
 

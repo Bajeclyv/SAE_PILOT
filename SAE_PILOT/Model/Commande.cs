@@ -17,7 +17,7 @@ namespace SAE_PILOT.Model
         private int numRevendeur; 
         private DateTime dateCommande;
         private DateTime? dateLivraison;
-        private double prixTotal;
+        private decimal prixTotal;
 
         private GestionDetails detail;
 
@@ -182,11 +182,11 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public double PrixTotal1
+        public decimal PrixTotal
         {
             get
             {
-                double total = 0;
+                decimal total = 0;
                 foreach (ProduitCommande pc in this.Detail.LesDetails)
                     if(pc.NumCommande == this.NumCommande)
                     {

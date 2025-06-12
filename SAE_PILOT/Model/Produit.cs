@@ -94,6 +94,36 @@ namespace SAE_PILOT.Model
                 this.numTypePointe = value;
             }
         }
+        public string NomTypePointe
+        {
+            get
+            {
+                string nom = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT libelletypepointe FROM typepointe where numtypepointe=@numtypepointe;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numtypepointe", this.NumTypePointe);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    nom = (String)dt.Rows[0]["libelletypepointe"];
+                }
+                return nom;
+            }
+        }
+        public string NomType
+        {
+            get
+            {
+                string nom = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT libelletype FROM type where numtype=@numtype;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numtype", this.NumType);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    nom = (String)dt.Rows[0]["libelletype"];
+                }
+                return nom;
+            }
+        }
 
         public int NumType
         {
