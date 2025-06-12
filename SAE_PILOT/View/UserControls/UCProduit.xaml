@@ -90,7 +90,7 @@
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding QteStock, ValidatesOnExceptions=true}"
-                    Header="Quantité en stock" />
+                    Header="Stock" />
                 <DataGridCheckBoxColumn
                     Width="*"
                     Binding="{Binding Disponible, ValidatesOnExceptions=true}"

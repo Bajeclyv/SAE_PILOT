@@ -13,7 +13,7 @@ namespace SAE_PILOT.Model
 
         public GestionRevendeur()
         {
-            this.lesRevendeurs = new ObservableCollection<Revendeur>(new Revendeur().FindAll());
+            this.LesRevendeurs = new ObservableCollection<Revendeur>(new Revendeur().FindAll());
         }
 
         public ObservableCollection<Revendeur> LesRevendeurs

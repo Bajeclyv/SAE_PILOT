@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace SAE_PILOT.Model
         private string adresseRue;
         private string adresseCP;
         private string adresseVille;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Revendeur () { }
         public Revendeur(int numRevendeur, string raisonSociale, 
@@ -46,6 +49,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.numRevendeur = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumRevendeur)));
             }
         }
 
@@ -59,6 +63,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.raisonSociale = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RaisonSociale)));
             }
         }
 
@@ -72,6 +77,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.adresseRue = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AdresseRue)));
             }
         }
 
@@ -85,6 +91,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.adresseCP = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AdresseCP)));
             }
         }
 
@@ -98,17 +105,10 @@ namespace SAE_PILOT.Model
             set
             {
                 this.adresseVille = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AdresseVille)));
             }
         }
-        /*
-            Colonne	Type	NOT NULL	Défaut	Contraintes	Actions	Commentaire
-            numrevendeur
-            raisonsociale
-            adresserue
-            adressecp
-            adresseville
-         
-                     */
+
         public List<Revendeur> FindAll()
         {
             List<Revendeur> lesRevendeurs = new List<Revendeur>();

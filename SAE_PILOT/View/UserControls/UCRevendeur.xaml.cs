@@ -30,6 +30,7 @@ namespace SAE_PILOT.View.UserControls
             dgRevendeur.Items.Filter = RechercherSocialeRevendeur;
         }
 
+
         private bool RechercherSocialeRevendeur(object obj)
         {
             if (String.IsNullOrEmpty(txtSociale.Text) && String.IsNullOrEmpty(txtCPRevendeur.Text) && String.IsNullOrEmpty(txtVilleRevendeur.Text))
@@ -54,7 +55,7 @@ namespace SAE_PILOT.View.UserControls
         }
         private void txtRevendeur_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CollectionViewSource.GetDefaultView(dgRevendeur.ItemsSource).Refresh();
+            CollectionViewSource.GetDefaultView(dgRevendeur.ItemsSource)?.Refresh();
 
         }
 
@@ -68,7 +69,7 @@ namespace SAE_PILOT.View.UserControls
                 try
                 {
                     unRevendeur.NumRevendeur = unRevendeur.Create();
-                    //LesRevendeurs.Add(unRevendeur);
+                    ((GestionRevendeur)this.DataContext).LesRevendeurs.Add(unRevendeur);
                 }
                 catch (Exception ex)
                 {
@@ -76,29 +77,6 @@ namespace SAE_PILOT.View.UserControls
                 }
             }
         }
-        /*private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)
-        {
-            Revendeur unRevendeur = new Revendeur();
-            WindowRevendeur windowRevendeur = new WindowRevendeur(unRevendeur);
-            windowRevendeur.ShowDialog();
-
-            try
-            {
-                if (windowRevendeur.DialogResult == true)
-                {
-                    if (windowRevendeur.LeRevendeur is not null)
-                    {
-                        unRevendeur = windowRevendeur.LeRevendeur;
-                        unRevendeur.Create();
-                        LesRevendeurs.Add(unRevendeur);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Le revendeur n'a pas pu être crée", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }*/
 
         private void butModifierRevendeur_Click(object sender, RoutedEventArgs e)
         {
@@ -125,6 +103,7 @@ namespace SAE_PILOT.View.UserControls
                         MessageBox.Show("Le revendeur n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
+                CollectionViewSource.GetDefaultView(dgRevendeur.ItemsSource)?.Refresh();
             }
         }
     }
