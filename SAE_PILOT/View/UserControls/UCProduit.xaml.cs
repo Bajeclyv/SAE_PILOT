@@ -1,6 +1,7 @@
 ﻿using SAE_PILOT.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace SAE_PILOT.View.UserControls
     /// </summary>
     public partial class UCProduit : UserControl
     {
+        ObservableCollection<Produit> LesProduits;
+
         public UCProduit()
         {
             InitializeComponent();
@@ -28,27 +31,38 @@ namespace SAE_PILOT.View.UserControls
             dgProduit.Items.Filter = RechercherProduit;
         }
 
-        private bool RechercherRevendeur(object obj)
+        private bool RechercherProduit(object obj)
         {
-            if (String.IsNullOrEmpty(.Text) && String.IsNullOrEmpty(txtCPRevendeur.Text) && String.IsNullOrEmpty(txtVilleRevendeur.Text))
+            if (String.IsNullOrEmpty(tbCategorie.Text) && String.IsNullOrEmpty(tbType.Text) && String.IsNullOrEmpty(tbTypePointe.Text) && String.IsNullOrEmpty(tbCouleur.Text))
                 return true;
 
-            bool filtreSociale = true;
-            bool filtreCP = true;
-            bool filtreVille = true;
+            bool filtreCat = true;
+            bool filtreType = true;
+            bool filtreTP = true;
+            bool filtreCouleur = true;
 
-            Revendeur unRevendeur = obj as Revendeur;
 
-            if (!String.IsNullOrEmpty(txtSociale.Text))
-                filtreSociale = unRevendeur.RaisonSociale.StartsWith(txtSociale.Text, StringComparison.OrdinalIgnoreCase);
+            Produit unProduit = obj as Produit;
 
-            if (!String.IsNullOrEmpty(txtCPRevendeur.Text))
-                filtreCP = unRevendeur.AdresseCP.ToLower().StartsWith(txtCPRevendeur.Text, StringComparison.OrdinalIgnoreCase);
+            if (!String.IsNullOrEmpty(tbCategorie.Text))
+                filtreCat = unProduit.NomCategorie.ToLower().StartsWith(tbCategorie.Text, StringComparison.OrdinalIgnoreCase);
 
-            if (!String.IsNullOrEmpty(txtVilleRevendeur.Text))
-                filtreVille = unRevendeur.AdresseVille.ToLower().StartsWith(txtVilleRevendeur.Text, StringComparison.OrdinalIgnoreCase);
+            if (!String.IsNullOrEmpty(tbType.Text))
+                filtreType = unProduit.NomType.ToLower().StartsWith(tbType.Text, StringComparison.OrdinalIgnoreCase);
 
-            return filtreSociale && filtreCP && filtreVille;
+            if (!String.IsNullOrEmpty(tbTypePointe.Text))
+            {
+                filtreTP = unProduit.NomTypePointe.ToLower().StartsWith(tbTypePointe.Text, StringComparison.OrdinalIgnoreCase);
+            }
+
+            if (!String.IsNullOrEmpty(tbCouleur.Text))
+            {
+                // Split(',') : découpe la chaîne selon les virgules
+                // Trim() : supprime les espaces avec les mots
+                filtreCouleur = unProduit.NomCouleur.ToLower().Split(',').Any(c => c.Trim().ToLower().StartsWith(tbCouleur.Text, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return filtreCat && filtreType && filtreTP && filtreCouleur;
         }
 
         private void tbProduit_TextChanged(object sender, TextChangedEventArgs e)
