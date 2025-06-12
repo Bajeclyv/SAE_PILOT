@@ -19,7 +19,7 @@ namespace SAE_PILOT.Model
         private DateTime? dateLivraison;
         private decimal prixTotal;
 
-        private GestionDetails detail;
+        private GestionDetails detail; // a revoir la pertinence
 
         public Commande () { }
         public Commande(int numCommande, int numEmploye, int numTransport,

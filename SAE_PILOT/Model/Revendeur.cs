@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -62,7 +63,7 @@ namespace SAE_PILOT.Model
 
             set
             {
-                this.raisonSociale = value;
+                this.raisonSociale = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(RaisonSociale)));
             }
         }
@@ -90,6 +91,9 @@ namespace SAE_PILOT.Model
 
             set
             {
+                Regex rg = new Regex(@"^[0-9]{5}$");
+                if (!rg.IsMatch(value));
+                    throw new ArgumentException("code postal invalide");
                 this.adresseCP = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AdresseCP)));
             }
@@ -104,7 +108,7 @@ namespace SAE_PILOT.Model
 
             set
             {
-                this.adresseVille = value;
+                this.adresseVille = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AdresseVille)));
             }
         }

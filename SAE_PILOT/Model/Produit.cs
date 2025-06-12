@@ -222,7 +222,7 @@ namespace SAE_PILOT.Model
 
             set
             {
-                this.codeProduit = value;
+                this.codeProduit = value.ToUpper();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CodeProduit)));
 
             }
@@ -237,7 +237,7 @@ namespace SAE_PILOT.Model
 
             set
             {
-                this.nomProduit = value;
+                this.nomProduit = value.Substring(0, 1).ToUpper() + value.Substring(1).ToLower();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomProduit)));
 
             }
