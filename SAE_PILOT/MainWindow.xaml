@@ -66,5 +66,9 @@
                 VerticalAlignment="Stretch" />
 
         </StackPanel>
+        <StackPanel Height="71" Margin="359,25,126,0" VerticalAlignment="Top" Grid.Column="1" >
+            <Image Height="68" Source="/img/pilot.png" Stretch="Fill" Width="255"/>
+        </StackPanel>
+        <Label Content="Bienvenue chez" HorizontalAlignment="Left" Margin="114,58,0,0" VerticalAlignment="Top" Foreground="#FF19459A" FontFamily="Rubik" Grid.Column="1" FontWeight="Bold" FontSize="32"/>
     </Grid>
 </Window>

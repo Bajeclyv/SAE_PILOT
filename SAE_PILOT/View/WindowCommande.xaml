@@ -58,7 +58,7 @@
             Width="100"
             Height="25"
             Margin="0,30,0,0"
-            Content="Créer commande" />
+            Content="Créer commande" Background="#FF19459A" BorderBrush="{x:Null}" Foreground="White" />
         </StackPanel>
         <Grid>
             <DataGrid

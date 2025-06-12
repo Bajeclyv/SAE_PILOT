@@ -71,6 +71,6 @@
             Height="25"
             Margin="0,30,0,0"
             Click="butValiderRevendeur_Click"
-            Content="Valider" />
+            Content="Valider" Background="#FF19459A" BorderBrush="{x:Null}" Foreground="White" />
     </StackPanel>
 </Window>

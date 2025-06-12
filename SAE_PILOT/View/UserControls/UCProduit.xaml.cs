@@ -1,7 +1,9 @@
-﻿using SAE_PILOT.Model;
+﻿using Npgsql;
+using SAE_PILOT.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TD3_BindingBDPension.Model;
 
 namespace SAE_PILOT.View.UserControls
 {
@@ -23,7 +26,7 @@ namespace SAE_PILOT.View.UserControls
     public partial class UCProduit : UserControl
     {
         ObservableCollection<Produit> LesProduits;
-
+        
         public UCProduit()
         {
             InitializeComponent();
@@ -70,14 +73,30 @@ namespace SAE_PILOT.View.UserControls
             CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
         }
 
+        // Initialiser les listes en haut
         private void butCreerProduit_Click(object sender, RoutedEventArgs e)
         {
+            // 1. Récuperer categorie, type, typepointe et couleur : commande sql + liste
+            // 2. Transformer cette liste en choix combobox
+            // 3. Si maj dans autre table, insérer la ligne
 
+            // CHARGER
+            // List<Type> types = ... // depuis SQL
+            // ComboBoxType.ItemsSource = types;
+            // ComboBoxType.DisplayMemberPath = "Nom";
+            // ComboBoxType.SelectedValuePath = "Id";
+
+            // UTILISER
+            // int id = (int)ComboBoxType.SelectedValue;
         }
 
         private void butModifierProduit_Click(object sender, RoutedEventArgs e)
         {
-
+            // 1. Récuperer categorie, type, typepointe et couleur : commande sql + liste
+            // 2. Transformer cette liste en choix combobox
+            // 3. Si maj dans autre table, insérer la ligne
         }
+
+        
     }
 }
