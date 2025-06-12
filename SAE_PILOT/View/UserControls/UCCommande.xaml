@@ -32,7 +32,7 @@
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             RenderTransformOrigin="0.534,0.038"
-            ToolTip="Ajouter" />
+            ToolTip="Ajouter" Click="butCreerCom_Click" />
         <Button
             x:Name="butModifierCom"
             Width="30"
