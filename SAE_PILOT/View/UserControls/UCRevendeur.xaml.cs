@@ -60,30 +60,70 @@ namespace SAE_PILOT.View.UserControls
 
         private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)
         {
-            WindowRevendeur windowRevendeur = new WindowRevendeur();
-            windowRevendeur.ShowDialog();
-
-            if (windowRevendeur.DialogResult == true)
+            Revendeur unRevendeur = new Revendeur();
+            WindowRevendeur wRevendeur = new WindowRevendeur(unRevendeur);
+            bool? result = wRevendeur.ShowDialog();
+            if (result == true)
             {
-                if (windowRevendeur.LeRevendeur is not null)
+                try
                 {
-                    Revendeur r = windowRevendeur.LeRevendeur;
-                    r.Create();
+                    unRevendeur.NumRevendeur = unRevendeur.Create();
+                    //LesRevendeurs.Add(unRevendeur);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Le revendeur n'a pas pu être créé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
+        /*private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)
+        {
+            Revendeur unRevendeur = new Revendeur();
+            WindowRevendeur windowRevendeur = new WindowRevendeur(unRevendeur);
+            windowRevendeur.ShowDialog();
+
+            try
+            {
+                if (windowRevendeur.DialogResult == true)
+                {
+                    if (windowRevendeur.LeRevendeur is not null)
+                    {
+                        unRevendeur = windowRevendeur.LeRevendeur;
+                        unRevendeur.Create();
+                        LesRevendeurs.Add(unRevendeur);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Le revendeur n'a pas pu être crée", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }*/
 
         private void butModifierRevendeur_Click(object sender, RoutedEventArgs e)
         {
-            WindowRevendeur windowRevendeur = new WindowRevendeur();
-            windowRevendeur.ShowDialog();
-
-            if (windowRevendeur.DialogResult == true)
+            if (dgRevendeur.SelectedItem == null)
+                MessageBox.Show("Veuillez sélectionner un revendeur", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
             {
-                if (windowRevendeur.LeRevendeur is not null)
+                Revendeur revendeurSelectionne = (Revendeur)dgRevendeur.SelectedItem;
+                Revendeur copie = new Revendeur(revendeurSelectionne.NumRevendeur, revendeurSelectionne.RaisonSociale, revendeurSelectionne.AdresseRue, revendeurSelectionne.AdresseCP, revendeurSelectionne.AdresseVille);
+                WindowRevendeur wRevendeur = new WindowRevendeur(copie);
+                bool? result = wRevendeur.ShowDialog();
+                if (result == true)
                 {
-                    Revendeur r = windowRevendeur.LeRevendeur;
-                    r.Create();
+                    try
+                    {
+                        copie.Update();
+                        revendeurSelectionne.RaisonSociale = copie.RaisonSociale;
+                        revendeurSelectionne.AdresseRue = copie.AdresseRue;
+                        revendeurSelectionne.AdresseCP = copie.AdresseCP;
+                        revendeurSelectionne.AdresseVille = copie.AdresseVille;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Le revendeur n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
         }

@@ -20,19 +20,30 @@ namespace SAE_PILOT.View
     /// </summary>
     public partial class WindowRevendeur : Window
     {
-        public Revendeur LeRevendeur;
-
-        public WindowRevendeur()
+        public WindowRevendeur(Revendeur unRevendeur)
         {
-            this.LeRevendeur = new Revendeur();
-            this.DataContext = this.LeRevendeur;
+            this.DataContext = unRevendeur;
             InitializeComponent();
         }
 
         private void butValiderRevendeur_Click(object sender, RoutedEventArgs e)
         {
-            LeRevendeur = (Revendeur)this.DataContext;
-            this.DialogResult = true;
+            bool ok = true;
+            foreach (UIElement uie in panelRevendeur.Children)
+            {
+                if (uie is TextBox)
+                {
+                    TextBox txt = (TextBox)uie;
+                    txt.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                }
+
+                if (Validation.GetHasError(uie))
+                    ok = false;
+            }
+            if (!ok)
+                MessageBox.Show(this, "Erreur de saisie.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+                DialogResult = true;
         }
     }
 }
