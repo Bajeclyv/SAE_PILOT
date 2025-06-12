@@ -68,6 +68,22 @@ namespace SAE_PILOT.Model
                 this.numEmploye = value;
             }
         }
+        public string NomCompletEmploye
+        {
+
+            get
+            {
+                string nom = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT nom, prenom FROM employe where numemploye=@numemploye;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numemploye", this.NumEmploye);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    nom = (String)dt.Rows[0]["nom"] + " " + (String)dt.Rows[0]["prenom"];
+                }
+                return nom;
+            }
+        }
 
         public int NumTransport
         {
@@ -79,6 +95,38 @@ namespace SAE_PILOT.Model
             set
             {
                 this.numTransport = value;
+            }
+        }
+        public string NomTransport
+        {
+
+            get
+            {
+                string nom = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT libelletransport FROM modetransport where numtransport=@numtransport;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numtransport", this.NumTransport);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    nom = (String)dt.Rows[0]["libelletransport"];
+                }
+                return nom;
+            }
+        }
+        public string NomRevendeur
+        {
+
+            get
+            {
+                string nom = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT raisonsociale FROM revendeur where numrevendeur=@numrevendeur;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    nom = (String)dt.Rows[0]["raisonsociale"];
+                }
+                return nom;
             }
         }
 

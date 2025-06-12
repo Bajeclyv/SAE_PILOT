@@ -28,11 +28,12 @@
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
+            Click="butCreerCom_Click"
             Content="&#xE710;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             RenderTransformOrigin="0.534,0.038"
-            ToolTip="Ajouter" Click="butCreerCom_Click" />
+            ToolTip="Ajouter" />
         <Button
             x:Name="butModifierCom"
             Width="30"
@@ -69,15 +70,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding NumEmploye, ValidatesOnExceptions=true}"
+                    Binding="{Binding NomCompletEmploye, ValidatesOnExceptions=true}"
                     Header="Employé" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding NumTransport, ValidatesOnExceptions=true}"
+                    Binding="{Binding NomTransport, ValidatesOnExceptions=true}"
                     Header="Transport" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding NumRevendeur, ValidatesOnExceptions=true}"
+                    Binding="{Binding NomRevendeur, ValidatesOnExceptions=true}"
                     Header="Revendeur" />
                 <DataGridTextColumn
                     Width="*"

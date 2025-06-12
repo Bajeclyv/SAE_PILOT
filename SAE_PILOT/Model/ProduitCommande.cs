@@ -16,6 +16,8 @@ namespace SAE_PILOT.Model
         private int qteCommande;
         private double prix;
 
+        private Produit unProduit;
+
         public ProduitCommande(int numCommande, int numProduit, int qteCommande, double prix)
         {
             this.NumCommande = numCommande;
@@ -70,7 +72,6 @@ namespace SAE_PILOT.Model
         {
             get
             {
-                //return UnProduit.PrixVente * QteCommande;
                 return 1;
             }
         }
