@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,17 +16,13 @@ using SAE_PILOT.Model;
 namespace SAE_PILOT.View
 {
     /// <summary>
-    /// Logique d'interaction pour WindowCommande.xaml
+    /// Logique d'interaction pour WindowRechercheProduit.xaml
     /// </summary>
-    public partial class WindowCommande : Window
+    public partial class WindowRechercheProduit : Window
     {
-        Commande laCommande;
-        List<Produit> lesProduits;
-        ObservableCollection<Produit> produitList;
-        public WindowCommande()
+        public WindowRechercheProduit()
         {
-            laCommande = new Commande();
-            this.DataContext = new Commande();
+            this.DataContext = new GestionProduit();
             InitializeComponent();
         }
     }
