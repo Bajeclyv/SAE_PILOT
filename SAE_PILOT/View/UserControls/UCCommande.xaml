@@ -62,7 +62,7 @@
             ToolTip="Supprimer" />
         <DataGrid
             Height="200"
-            Margin="28,98,29,152"
+            Margin="28,98,400,152"
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding LesCommandes}">
