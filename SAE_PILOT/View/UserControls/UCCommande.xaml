@@ -62,11 +62,13 @@
             Foreground="#FFF8F6F6"
             ToolTip="Supprimer" />
         <DataGrid
+            x:Name="dgCommandes"
             Height="200"
             Margin="28,98,400,152"
             AutoGenerateColumns="False"
             IsReadOnly="True"
-            ItemsSource="{Binding LesCommandes}">
+            ItemsSource="{Binding LesCommandes}"
+            SelectionChanged="DataGrid_SelectionChanged_1">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="*"
@@ -88,6 +90,16 @@
                     Width="*"
                     Binding="{Binding DateLivraison, ValidatesOnExceptions=true}"
                     Header="Date livraison" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid
+            x:Name="dgProduitsCommande"
+            Margin="437,98,39,152"
+            SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="" />
+                <DataGridTextColumn />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
