@@ -1,6 +1,8 @@
 ﻿using Npgsql;
+using SAE_PILOT.View.UserControls;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -19,6 +21,8 @@ namespace SAE_PILOT.Model
         private decimal prixVente;
         private int qteStock;
         private bool disponible;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Produit () { }
         public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit, 
@@ -79,6 +83,8 @@ namespace SAE_PILOT.Model
             set
             {
                 this.numProduit = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumProduit)));
+
             }
         }
 
@@ -92,6 +98,8 @@ namespace SAE_PILOT.Model
             set
             {
                 this.numTypePointe = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumTypePointe)));
+
             }
         }
         public string NomTypePointe
@@ -108,6 +116,10 @@ namespace SAE_PILOT.Model
                 }
                 return nom;
             }
+            set
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomTypePointe)));
+            }
         }
         public string NomType
         {
@@ -122,6 +134,10 @@ namespace SAE_PILOT.Model
                     nom = (String)dt.Rows[0]["libelletype"];
                 }
                 return nom;
+            }
+            set
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomType)));
             }
         }
 
@@ -153,6 +169,10 @@ namespace SAE_PILOT.Model
                 }
                 return couleur;
             }
+            set
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomCouleur)));
+            }
         }
         public string NomCategorie
         {
@@ -171,6 +191,10 @@ namespace SAE_PILOT.Model
                 }
                 return nom;
             }
+            set
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomCategorie)));
+            }
         }
 
 
@@ -184,6 +208,8 @@ namespace SAE_PILOT.Model
             set
             {
                 this.numType = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumType)));
+
             }
         }
 
@@ -197,6 +223,8 @@ namespace SAE_PILOT.Model
             set
             {
                 this.codeProduit = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CodeProduit)));
+
             }
         }
 
@@ -210,6 +238,8 @@ namespace SAE_PILOT.Model
             set
             {
                 this.nomProduit = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NomProduit)));
+
             }
         }
 
@@ -223,6 +253,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.prixVente = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PrixVente)));
             }
         }
 
@@ -236,6 +267,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.qteStock = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(QteStock)));
             }
         }
 
@@ -249,6 +281,7 @@ namespace SAE_PILOT.Model
             set
             {
                 this.disponible = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Disponible)));
             }
         }
 

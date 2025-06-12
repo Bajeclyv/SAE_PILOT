@@ -69,5 +69,15 @@ namespace SAE_PILOT.View.UserControls
         {
             CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
         }
+
+        private void butCreerProduit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void butModifierProduit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

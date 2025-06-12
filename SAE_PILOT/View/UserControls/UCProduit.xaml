@@ -32,7 +32,7 @@
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             RenderTransformOrigin="0.534,0.038"
-            ToolTip="Ajouter" />
+            ToolTip="Ajouter" Click="butCreerProduit_Click" />
         <Button
             x:Name="butModifierProduit"
             Width="30"
@@ -46,7 +46,7 @@
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
             RenderTransformOrigin="0.408,-0.057"
-            ToolTip="Modifier" />
+            ToolTip="Modifier" Click="butModifierProduit_Click" />
         <Button
             x:Name="butSupprimerProduit"
             Width="30"
