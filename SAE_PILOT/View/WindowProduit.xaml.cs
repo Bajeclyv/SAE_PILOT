@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAE_PILOT.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,9 @@ namespace SAE_PILOT.View
     /// </summary>
     public partial class WindowProduit : Window
     {
-        public WindowProduit()
+        public WindowProduit(Produit unProduit)
         {
+            this.DataContext = unProduit;
             InitializeComponent();
         }
     }

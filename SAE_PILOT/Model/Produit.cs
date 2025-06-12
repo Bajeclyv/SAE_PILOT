@@ -125,6 +125,55 @@ namespace SAE_PILOT.Model
             }
         }
 
+        public string NomCouleur
+        {
+            get
+            {
+                List<string> lesCouleurs = new List<string>();
+                string couleur = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT libellecouleur FROM couleur c " +
+                    "join couleurproduit cp on c.numcouleur=cp.numcouleur " +
+                    "join produit p on cp.numproduit=p.numproduit " +
+                    "where cp.numproduit=@numproduit;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numproduit", this.NumProduit);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        lesCouleurs.Add(dr["libellecouleur"].ToString());
+                    }
+                    foreach (string c in lesCouleurs)
+                    {
+                        if (couleur != "")
+                            couleur += ", ";
+
+                        couleur += c;
+                    }
+                }
+                return couleur;
+            }
+        }
+        public string NomCategorie
+        {
+            get
+            {
+                string nom = "";
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT libellecategorie FROM type t " +
+                    "join categorie c on c.numcategorie=t.numcategorie " +
+                    "join produit p on p.numtype=t.numtype " +
+                    "where p.numproduit=@numproduit;"))
+                {
+                    cmdSelect.Parameters.AddWithValue("numproduit", this.NumProduit);
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    nom = (String)dt.Rows[0]["libellecategorie"];
+                }
+                return nom;
+            }
+        }
+
+
         public int NumType
         {
             get

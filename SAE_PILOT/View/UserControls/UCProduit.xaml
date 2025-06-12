@@ -23,7 +23,7 @@
             x:Name="butCreerProduit"
             Width="30"
             Height="30"
-            Margin="28,299,0,0"
+            Margin="28,333,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -37,7 +37,7 @@
             x:Name="butModifierProduit"
             Width="30"
             Height="30"
-            Margin="204,299,0,0"
+            Margin="204,333,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -51,7 +51,7 @@
             x:Name="butSupprimerProduit"
             Width="30"
             Height="30"
-            Margin="349,299,0,0"
+            Margin="349,333,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -61,8 +61,9 @@
             Foreground="#FFF8F6F6"
             ToolTip="Supprimer" />
         <DataGrid
+            x:Name="dgProduit"
             Height="200"
-            Margin="28,98,29,152"
+            Margin="28,132,29,118"
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding LesProduits}">
@@ -81,12 +82,20 @@
                     Header="Prix vente" />
                 <DataGridTextColumn
                     Width="*"
+                    Binding="{Binding NomCategorie, ValidatesOnExceptions=true}"
+                    Header="Categorie" />
+                <DataGridTextColumn
+                    Width="*"
                     Binding="{Binding NomType, ValidatesOnExceptions=true}"
                     Header="Type" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding NomTypePointe, ValidatesOnExceptions=true}"
                     Header="Type pointe" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding NomCouleur, ValidatesOnExceptions=true}"
+                    Header="Couleur" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding QteStock, ValidatesOnExceptions=true}"
@@ -97,5 +106,66 @@
                     Header="Disponible" />
             </DataGrid.Columns>
         </DataGrid>
+        <TextBox
+            x:Name="tbCategorie"
+            Width="120"
+            Margin="32,93,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextChanged="tbProduit_TextChanged"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="tbType"
+            Width="120"
+            Margin="164,93,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextChanged="tbProduit_TextChanged"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="tbTypePointe"
+            Width="120"
+            Margin="298,93,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextChanged="tbProduit_TextChanged"
+            TextWrapping="Wrap" />
+        <TextBox
+            x:Name="tbCouleur"
+            Width="120"
+            Margin="435,93,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Text=""
+            TextChanged="tbProduit_TextChanged"
+            TextWrapping="Wrap" />
+        <Label
+            Margin="27,70,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            Content="Catégorie"
+            Foreground="Gray" />
+        <Label
+            Margin="157,70,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Type"
+            Foreground="Gray" />
+        <Label
+            Margin="291,70,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Type de pointe"
+            Foreground="Gray" />
+        <Label
+            Margin="429,70,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Couleur"
+            Foreground="Gray" />
     </Grid>
 </UserControl>

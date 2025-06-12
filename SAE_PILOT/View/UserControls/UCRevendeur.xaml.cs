@@ -27,11 +27,11 @@ namespace SAE_PILOT.View.UserControls
         {
             InitializeComponent();
             this.DataContext = new GestionRevendeur();
-            dgRevendeur.Items.Filter = RechercherSocialeRevendeur;
+            dgRevendeur.Items.Filter = RechercherRevendeur;
         }
 
 
-        private bool RechercherSocialeRevendeur(object obj)
+        private bool RechercherRevendeur(object obj)
         {
             if (String.IsNullOrEmpty(txtSociale.Text) && String.IsNullOrEmpty(txtCPRevendeur.Text) && String.IsNullOrEmpty(txtVilleRevendeur.Text))
                 return true;
@@ -56,7 +56,6 @@ namespace SAE_PILOT.View.UserControls
         private void txtRevendeur_TextChanged(object sender, TextChangedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(dgRevendeur.ItemsSource)?.Refresh();
-
         }
 
         private void butCreerRevendeur_Click(object sender, RoutedEventArgs e)

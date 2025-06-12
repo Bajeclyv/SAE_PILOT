@@ -22,8 +22,8 @@ namespace SAE_PILOT.View
     {
         public WindowRevendeur(Revendeur unRevendeur)
         {
-            this.DataContext = unRevendeur;
             InitializeComponent();
+            this.DataContext = unRevendeur;
         }
 
         private void butValiderRevendeur_Click(object sender, RoutedEventArgs e)

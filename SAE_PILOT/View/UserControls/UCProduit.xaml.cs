@@ -25,6 +25,35 @@ namespace SAE_PILOT.View.UserControls
         {
             InitializeComponent();
             this.DataContext = new GestionProduit();
+            dgProduit.Items.Filter = RechercherProduit;
+        }
+
+        private bool RechercherRevendeur(object obj)
+        {
+            if (String.IsNullOrEmpty(.Text) && String.IsNullOrEmpty(txtCPRevendeur.Text) && String.IsNullOrEmpty(txtVilleRevendeur.Text))
+                return true;
+
+            bool filtreSociale = true;
+            bool filtreCP = true;
+            bool filtreVille = true;
+
+            Revendeur unRevendeur = obj as Revendeur;
+
+            if (!String.IsNullOrEmpty(txtSociale.Text))
+                filtreSociale = unRevendeur.RaisonSociale.StartsWith(txtSociale.Text, StringComparison.OrdinalIgnoreCase);
+
+            if (!String.IsNullOrEmpty(txtCPRevendeur.Text))
+                filtreCP = unRevendeur.AdresseCP.ToLower().StartsWith(txtCPRevendeur.Text, StringComparison.OrdinalIgnoreCase);
+
+            if (!String.IsNullOrEmpty(txtVilleRevendeur.Text))
+                filtreVille = unRevendeur.AdresseVille.ToLower().StartsWith(txtVilleRevendeur.Text, StringComparison.OrdinalIgnoreCase);
+
+            return filtreSociale && filtreCP && filtreVille;
+        }
+
+        private void tbProduit_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
         }
     }
 }
