@@ -73,21 +73,25 @@ namespace SAE_PILOT.View.UserControls
             CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
         }
 
-        // Initialiser les listes en haut
         private void butCreerProduit_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Récuperer categorie, type, typepointe et couleur : commande sql + liste
-            // 2. Transformer cette liste en choix combobox
-            // 3. Si maj dans autre table, insérer la ligne
-
-            // CHARGER
-            // List<Type> types = ... // depuis SQL
-            // ComboBoxType.ItemsSource = types;
-            // ComboBoxType.DisplayMemberPath = "Nom";
-            // ComboBoxType.SelectedValuePath = "Id";
-
             // UTILISER
             // int id = (int)ComboBoxType.SelectedValue;
+            Produit unProduit = new Produit();
+            WindowProduit wProduit = new WindowProduit(unProduit);
+            bool? result = wProduit.ShowDialog();
+            if (result == true)
+            {
+                try
+                {
+                    unProduit.NumProduit = unProduit.Create();
+                    ((GestionProduit)this.DataContext).LesProduits.Add(unProduit);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Le produit n'a pas pu être créé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void butModifierProduit_Click(object sender, RoutedEventArgs e)

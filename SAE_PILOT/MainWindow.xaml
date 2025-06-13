@@ -8,6 +8,7 @@
     Title="MainWindow"
     Width="1000"
     Height="600"
+    xml:lang="fr-FR"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -66,9 +67,26 @@
                 VerticalAlignment="Stretch" />
 
         </StackPanel>
-        <StackPanel Height="71" Margin="359,25,126,0" VerticalAlignment="Top" Grid.Column="1" >
-            <Image Height="68" Source="/img/pilot.png" Stretch="Fill" Width="255"/>
+        <StackPanel
+            Grid.Column="1"
+            Height="71"
+            Margin="359,13,126,0"
+            VerticalAlignment="Top">
+            <Image
+                Width="255"
+                Height="68"
+                Source="/img/pilot.png"
+                Stretch="Fill" />
         </StackPanel>
-        <Label Content="Bienvenue chez" HorizontalAlignment="Left" Margin="114,58,0,0" VerticalAlignment="Top" Foreground="#FF19459A" FontFamily="Rubik" Grid.Column="1" FontWeight="Bold" FontSize="32"/>
+        <Label
+            Grid.Column="1"
+            Margin="102,46,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Bienvenue chez"
+            FontFamily="Rubik"
+            FontSize="32"
+            FontWeight="Bold"
+            Foreground="#FF19459A" />
     </Grid>
 </Window>

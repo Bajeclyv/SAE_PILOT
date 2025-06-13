@@ -31,6 +31,11 @@ namespace SAE_PILOT.View
         {
             this.DataContext = unProduit;
             InitializeComponent();
+            SelectionCategorie();
+            SelectionType();
+            SelectionTypePointe();
+            SelectionCouleur();
+            InitComboBox();
         }
         private void SelectionCategorie()
         {
@@ -39,7 +44,7 @@ namespace SAE_PILOT.View
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    categories.Add(new Categorie((Int32)dr["numcategorie"], (CategorieProduit)dr["libellecategorie"]));
+                    categories.Add(new Categorie((Int32)dr["numcategorie"], Enum.Parse<CategorieProduit>(dr["libellecategorie"].ToString())));
                 }
             }
 
@@ -80,7 +85,21 @@ namespace SAE_PILOT.View
 
         private void InitComboBox()
         {
+            cbCat.ItemsSource = categories;
+            cbCat.DisplayMemberPath = "libellecategorie";
+            cbCat.SelectedValuePath = "numcategorie";
 
+            cbCouleur.ItemsSource = couleurs;
+            cbCat.DisplayMemberPath = "libellecouleur";
+            cbCat.SelectedValuePath = "numcouleur";
+
+            cbPointe.ItemsSource = categories;
+            cbPointe.DisplayMemberPath = "libelletypepointe";
+            cbPointe.SelectedValuePath = "numtypepointe";
+
+            cbType.ItemsSource = types;
+            cbType.DisplayMemberPath = "libelletype";
+            cbType.SelectedValuePath = "numtype";
         }
     }
 }
