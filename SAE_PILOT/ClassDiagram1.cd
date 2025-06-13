@@ -1,2 +1,191 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SAE_PILOT.Model.Categorie">
+    <Position X="11.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAA=</HashCode>
+      <FileName>Model\Categorie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.Commande" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgQAAAABCGBqAABACgAYCAAgCAECAEAAAAEIAAAACAA=</HashCode>
+      <FileName>Model\Commande.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SAE_PILOT.Model.Couleur">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Couleur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.CouleurProduit" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CouleurProduit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.Employe" BaseTypeListCollapsed="true">
+    <Position X="28" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAACAgAAAAAQKAAgACECIkACACAQAgAAEAA=</HashCode>
+      <FileName>Model\Employe.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SAE_PILOT.Model.GestionCommande">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Model\GestionCommande.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.GestionDetails">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Model\GestionDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.GestionProduit">
+    <Position X="17.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\GestionProduit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.GestionRevendeur">
+    <Position X="19.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Model\GestionRevendeur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.ModeTransport">
+    <Position X="13.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAKAAAAAAAAAAAAAAAAAAACAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Model\ModeTransport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.Produit" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gBQAAgAAAAAAApAABADQCAQggAEAAEADAABAAAQSEAA=</HashCode>
+      <FileName>Model\Produit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SAE_PILOT.Model.ProduitCommande" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAEBAAAAAAAAAAAQCAQgAAEAAEAAAQEAAAUAAAA=</HashCode>
+      <FileName>Model\ProduitCommande.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SAE_PILOT.Model.Revendeur" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAEAAAAAACAgAQCgAgkAEAAEGAAAABgAAAAAA=</HashCode>
+      <FileName>Model\Revendeur.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SAE_PILOT.Model.Role" BaseTypeListCollapsed="true">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAQCAAgAAEAAkABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Role.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SAE_PILOT.Model.Type">
+    <Position X="11.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABAAAAAAAAAAAAAAAAAAAACAAAEAEAABAA=</HashCode>
+      <FileName>Model\Type.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SAE_PILOT.Model.TypePointe">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAIAAACAAA=</HashCode>
+      <FileName>Model\TypePointe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TD3_BindingBDPension.Model.DataAccess">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAgAAAABIBAAAABAABAAQAgAABAAAAA=</HashCode>
+      <FileName>Model\DataAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TD3_BindingBDPension.Model.LogError">
+    <Position X="9.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\LogError.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SAE_PILOT.Model.ICrud&lt;T&gt;">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAQCAAgAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ICrud.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SAE_PILOT.Model.CategorieProduit" Collapsed="true">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Categorie.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SAE_PILOT.Model.Coloris" Collapsed="true">
+    <Position X="2.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAgAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Model\Couleur.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SAE_PILOT.Model.Mode" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACACIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ModeTransport.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SAE_PILOT.Model.RoleEmploye" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Role.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SAE_PILOT.Model.EpaisseurPointe" Collapsed="true">
+    <Position X="4.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAEAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TypePointe.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
