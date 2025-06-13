@@ -11,55 +11,87 @@
     mc:Ignorable="d">
     <StackPanel
         x:Name="ckDispo"
-        Width="300" Margin="100,23,100,28">
+        Width="300"
+        Margin="100,23,100,28">
         <Label x:Name="labCode" Content="Code produit" />
         <TextBox
             x:Name="boxCode"
             Width="300"
+            Height="20"
+            Margin="0,0,0,5"
             Text="{Binding CodeProduit, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" Height="20" Margin="0,0,0,5" />
+            TextWrapping="Wrap" />
         <Label x:Name="labNom" Content="Nom" />
         <TextBox
             x:Name="boxNom"
             Width="300"
+            Height="19"
+            Margin="0,0,0,5"
             Text="{Binding NomProduit, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" Height="19" Margin="0,0,0,5" />
+            TextWrapping="Wrap" />
         <Label x:Name="labCat" Content="Categorie" />
-        <ComboBox Width="120" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+        <ComboBox
+            x:Name="cbCat"
+            Width="120"
+            Margin="0,0,0,5"
+            HorizontalAlignment="Left" />
         <Label x:Name="labType" Content="Type" />
-        <ComboBox Width="120" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+        <ComboBox
+            x:Name="cbType"
+            Width="120"
+            Margin="0,0,0,5"
+            HorizontalAlignment="Left" />
         <!--<TextBox
             x:Name="boxType"
             Width="120"
             Text="{Binding LeType, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />-->
         <Label x:Name="labPointe" Content="Type de pointe" />
-        <ComboBox Width="120" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+        <ComboBox
+            x:Name="cbPointe"
+            Width="120"
+            Margin="0,0,0,5"
+            HorizontalAlignment="Left" />
         <!--<TextBox
             x:Name="boxPointe"
             Width="120"
             Text="{Binding LeTypePointe, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />-->
         <Label x:Name="labCouleur" Content="Couleur" />
-        <ComboBox Width="120" HorizontalAlignment="Left" Margin="0,0,0,5"/>
+        <ComboBox
+            x:Name="cbCouleur"
+            Width="120"
+            Margin="0,0,0,5"
+            HorizontalAlignment="Left" />
         <Label x:Name="labVente" Content="Prix de vente" />
         <TextBox
             x:Name="boxVente"
             Width="300"
+            Height="20"
+            Margin="0,0,0,5"
             Text="{Binding PrixVente, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" Height="20" Margin="0,0,0,5" />
+            TextWrapping="Wrap" />
         <Label x:Name="labStock" Content="Stock" />
         <TextBox
             x:Name="boxStock"
             Width="60"
+            Height="20"
+            Margin="0,0,0,15"
+            HorizontalAlignment="Left"
             Text="{Binding QteStock, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" Height="20" HorizontalAlignment="Left" Margin="0,0,0,15" />
-        <CheckBox Content="Disponible" IsChecked="{Binding Disponible, ValidatesOnExceptions=True}" Margin="0,0,0,10" />
+            TextWrapping="Wrap" />
+        <CheckBox
+            Margin="0,0,0,10"
+            Content="Disponible"
+            IsChecked="{Binding Disponible, ValidatesOnExceptions=True}" />
         <Button
             x:Name="butValiderProduit"
             Width="60"
             Height="25"
-            Content="Valider" Background="#FF19459A" BorderBrush="{x:Null}" Foreground="White" />
-        
+            Background="#FF19459A"
+            BorderBrush="{x:Null}"
+            Content="Valider"
+            Foreground="White" />
+
     </StackPanel>
 </Window>

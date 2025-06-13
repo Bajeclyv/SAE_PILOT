@@ -92,7 +92,7 @@ namespace SAE_PILOT.Model
             set
             {
                 Regex rg = new Regex(@"^[0-9]{5}$");
-                if (!rg.IsMatch(value));
+                if (!rg.IsMatch(value))
                     throw new ArgumentException("code postal invalide");
                 this.adresseCP = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(AdresseCP)));
