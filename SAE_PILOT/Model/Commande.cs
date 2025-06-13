@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TD3_BindingBDPension.Model;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SAE_PILOT.Model
 {

@@ -75,15 +75,17 @@ namespace SAE_PILOT.View.UserControls
 
         private void butCreerProduit_Click(object sender, RoutedEventArgs e)
         {
-            // UTILISER
-            // int id = (int)ComboBoxType.SelectedValue;
             Produit unProduit = new Produit();
+            Model.Type unType = new Model.Type();
+            Couleur uneCouleur = new Couleur();
+
             WindowProduit wProduit = new WindowProduit(unProduit);
             bool? result = wProduit.ShowDialog();
             if (result == true)
             {
                 try
                 {
+                    MessageBox.Show($"Catégorie sélectionnée : {unProduit.NumType}, {unProduit.NumTypePointe}");
                     unProduit.NumProduit = unProduit.Create();
                     ((GestionProduit)this.DataContext).LesProduits.Add(unProduit);
                 }

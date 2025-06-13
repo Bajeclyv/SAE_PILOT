@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SAE_PILOT.Model
 {
-    public enum CategorieProduit { Ecole, Bureau, Loisir, HauteEcriture };
+    //public enum CategorieProduit { Ecole, Bureau, Loisir, HauteEcriture };
     public  class Categorie
     {
         private int numCategorie;
-        private CategorieProduit libelleCategorie;
+        private string libelleCategorie;
 
         public Categorie() { }
-        public Categorie(int idCategorie, CategorieProduit catProduit)
+        public Categorie(int idCategorie, string catProduit)
         {
             this.IdCategorie = idCategorie;
             this.CatProduit = catProduit;
         }
-        public Categorie(CategorieProduit catProduit)
+        public Categorie(string catProduit)
         {
             this.CatProduit = catProduit;
         }
@@ -36,7 +36,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public CategorieProduit CatProduit
+        public string CatProduit
         {
             get
             {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TD3_BindingBDPension.Model;
@@ -21,10 +22,17 @@ namespace SAE_PILOT.Model
         private decimal prixVente;
         private int qteStock;
         private bool disponible;
+        public Dictionary<int, string> dCategories { get; set; }
+        public Dictionary<int, string> dTypes { get; set; }
+        public Dictionary<int, string> dPointes { get; set; }
+        public Dictionary<int, string> dCouleurs { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public Produit () { }
+        public Produit ()
+        {
+            ChargerDictionnaires();
+        }
         public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit, 
             decimal prixVente, int qteStock)
         {
@@ -36,19 +44,9 @@ namespace SAE_PILOT.Model
             this.PrixVente = prixVente;
             this.QteStock = qteStock;
             this.Disponible = true;
+            ChargerDictionnaires();
         }
 
-        public Produit(int numTypePointe, int numType, string codeProduit, string nomProduit,
-            decimal prixVente, int qteStock)
-        {
-            this.NumTypePointe = numTypePointe;
-            this.NumType = numType;
-            this.CodeProduit = codeProduit;
-            this.NomProduit = nomProduit;
-            this.PrixVente = prixVente;
-            this.QteStock = qteStock;
-            this.Disponible = true;
-        }
         public Produit(int numProduit, int numTypePointe, int numType, string codeProduit, string nomProduit,
             decimal prixVente, int qteStock, bool disponible)
         {
@@ -60,6 +58,7 @@ namespace SAE_PILOT.Model
             this.PrixVente = prixVente;
             this.QteStock = qteStock;
             this.Disponible = disponible;
+            ChargerDictionnaires();
         }
         public Produit(int numTypePointe, int numType, string codeProduit, string nomProduit,
             decimal prixVente, int qteStock, bool disponible)
@@ -71,6 +70,7 @@ namespace SAE_PILOT.Model
             this.PrixVente = prixVente;
             this.QteStock = qteStock;
             this.Disponible = disponible;
+            ChargerDictionnaires();
         }
 
         public int NumProduit
@@ -224,7 +224,6 @@ namespace SAE_PILOT.Model
             {
                 this.codeProduit = value.ToUpper();
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CodeProduit)));
-
             }
         }
 
@@ -287,12 +286,36 @@ namespace SAE_PILOT.Model
 
         public int Create()
         {
-            throw new NotImplementedException();
+            int nb = 0;
+            using (var cmdInsert = new NpgsqlCommand("INSERT INTO produit (numtypepointe,numtype,codeproduit,nomproduit,prixvente,quantitestock,disponible) values (@numproduit,@numtypepointe,@numtype,@codeproduit, @nomproduit, @prixvente, @qtestock, @disponible) RETURNING numproduit"))
+            {
+                cmdInsert.Parameters.AddWithValue("numtypepointe", this.NumTypePointe);
+                cmdInsert.Parameters.AddWithValue("numtype", this.NumType);
+                cmdInsert.Parameters.AddWithValue("codeproduit", this.CodeProduit);
+                cmdInsert.Parameters.AddWithValue("nomproduit", this.NomProduit);
+                cmdInsert.Parameters.AddWithValue("prixvente", this.PrixVente);
+                cmdInsert.Parameters.AddWithValue("qtestock", this.QteStock);
+                cmdInsert.Parameters.AddWithValue("disponible", this.Disponible);
+                nb = DataAccess.Instance.ExecuteInsert(cmdInsert);
+            }
+            this.NumProduit = nb;
+            return nb;
         }
 
         public void Read()
         {
-            throw new NotImplementedException();
+            using (var cmdSelect = new NpgsqlCommand("SELECT * FROM produit WHERE numproduit = @numproduit"))
+            {
+                cmdSelect.Parameters.AddWithValue("numproduit", this.NumProduit);
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                this.NumTypePointe = (Int32)dt.Rows[0]["numtypepointe"];
+                this.NumType = (Int32)dt.Rows[0]["numtype"];
+                this.CodeProduit = (String)dt.Rows[0]["codeproduit"];
+                this.NomProduit = (String)dt.Rows[0]["nomproduit"];
+                this.PrixVente = (decimal)dt.Rows[0]["prixvente"];
+                this.QteStock = (Int32)dt.Rows[0]["quantitestock"];
+                this.Disponible = (Boolean)dt.Rows[0]["disponible"];
+            }
         }
 
         public int Update()
@@ -344,6 +367,67 @@ namespace SAE_PILOT.Model
         public List<Produit> FindBySelection(string criteres)
         {
             throw new NotImplementedException();
+        }
+
+        private void ChargerDictionnaires()
+        {
+            ChargerCategorie();
+            ChargerCouleur();
+            ChargerType();
+            ChargerTypePointe();
+        }
+
+        private Dictionary<int, string> ChargerCategorie()
+        {
+            dCategories = new Dictionary<int, string>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select numcategorie, libellecategorie from categorie;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dCategories.Add((Int32)dr["numcategorie"], (string)dr["libellecategorie"]);
+                }
+            }
+            return dCategories;
+        }
+        private Dictionary<int, string> ChargerType()
+        {
+            dTypes = new Dictionary<int, string>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select numtype, libelletype from type;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dTypes.Add((Int32)dr["numtype"], (string)dr["libelletype"]);
+                }
+            }
+            return dTypes;
+        }
+        private Dictionary<int, string> ChargerTypePointe()
+        {
+            dPointes = new Dictionary<int, string>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select numtypepointe, libelletypepointe from typepointe;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dPointes.Add((Int32)dr["numtypepointe"], (string)dr["libelletypepointe"]);
+                }
+            }
+            return dPointes;
+        }
+        private Dictionary<int, string> ChargerCouleur()
+        {
+            dCouleurs = new Dictionary<int, string>();
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select numcouleur, libellecouleur from couleur;"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    dCouleurs.Add((Int32)dr["numcouleur"], (string)dr["libellecouleur"]);
+                }
+            }
+            return dCouleurs;
         }
     }
 }

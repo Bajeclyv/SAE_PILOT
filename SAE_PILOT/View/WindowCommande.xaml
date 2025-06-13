@@ -9,56 +9,60 @@
     Title="WindowCommande"
     Width="716"
     Height="400"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
         <model:Commande x:Key="NouvelleCommande" />
     </Window.Resources>
     <StackPanel Orientation="Horizontal">
         <StackPanel
-        x:Name="panelCreerCom"
-        Width="250"
-        Height="250">
-            <Label
-            x:Name="labTransport"
-            Margin="0,0,0,5"
-            Content="Mode de _transport"
-            Target="{Binding ElementName=cbTransport}" />
-            <ComboBox
-            x:Name="cbTransport"
+            x:Name="panelCreerCom"
             Width="250"
-            Height="25">
+            Height="250">
+            <Label
+                x:Name="labTransport"
+                Margin="0,0,0,5"
+                Content="Mode de _transport"
+                Target="{Binding ElementName=cbTransport}" />
+            <ComboBox
+                x:Name="cbTransport"
+                Width="250"
+                Height="25">
                 <ComboBoxItem>UPS</ComboBoxItem>
                 I=
                 <ComboBoxItem>Chronospost</ComboBoxItem>
                 <ComboBoxItem>Relais</ComboBoxItem>
             </ComboBox>
             <Label
-            x:Name="labRevendeur"
-            Margin="0,0,0,5"
-            Content="_Revendeur"
-            Target="{Binding ElementName=boxRevendeur}" />
+                x:Name="labRevendeur"
+                Margin="0,0,0,5"
+                Content="_Revendeur"
+                Target="{Binding ElementName=boxRevendeur}" />
             <TextBox
-            x:Name="boxRevendeur"
-            Width="250"
-            Height="25"
-            Margin="0,0,0,10"
-            Text="{Binding UnRevendeur, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" />
+                x:Name="boxRevendeur"
+                Width="250"
+                Height="25"
+                Margin="0,0,0,10"
+                Text="{Binding UnRevendeur, ValidatesOnExceptions=True}"
+                TextWrapping="Wrap" />
             <Label
-            x:Name="labLivraison"
-            Margin="0,0,0,5"
-            Content="Date de _livraison"
-            Target="{Binding ElementName=pickLivraison}" />
+                x:Name="labLivraison"
+                Margin="0,0,0,5"
+                Content="Date de _livraison"
+                Target="{Binding ElementName=pickLivraison}" />
             <DatePicker
-            x:Name="pickLivraison"
-            Width="250"
-            Height="25" />
+                x:Name="pickLivraison"
+                Width="250"
+                Height="25" />
             <Button
-            x:Name="butCreerCom"
-            Width="100"
-            Height="25"
-            Margin="0,30,0,0"
-            Content="Créer commande" Background="#FF19459A" BorderBrush="{x:Null}" Foreground="White" />
+                x:Name="butCreerCom"
+                Width="100"
+                Height="25"
+                Margin="0,30,0,0"
+                Background="#FF19459A"
+                BorderBrush="{x:Null}"
+                Content="Créer commande"
+                Foreground="White" />
         </StackPanel>
         <Grid>
             <DataGrid
@@ -66,10 +70,8 @@
                 Margin="29,98,-423,86"
                 AutoGenerateColumns="False"
                 IsReadOnly="True"
-                ItemsSource="{Binding LesProduits}" RenderTransformOrigin="0.5,0.5">
-                
-
-            </DataGrid>
+                ItemsSource="{Binding LesProduits}"
+                RenderTransformOrigin="0.5,0.5" />
         </Grid>
     </StackPanel>
 </Window>

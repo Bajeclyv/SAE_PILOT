@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SAE_PILOT.Model
 {
-    public enum Coloris { Bleu, Rouge, Vert, Noir};
+    //public enum Coloris { Bleu, Rouge, Vert, Noir};
     public class Couleur
     {
         private int numCouleur;
-        private Coloris libelleCouleur;
+        private string libelleCouleur;
 
         public Couleur () { }
-        public Couleur(int numCouleur, Coloris libelleCouleur)
+        public Couleur(int numCouleur, string libelleCouleur)
         {
             this.NumCouleur = numCouleur;
             this.LibelleCouleur = libelleCouleur;
         }
-        public Couleur(Coloris libelleCouleur)
+        public Couleur(string libelleCouleur)
         {
             this.LibelleCouleur = libelleCouleur;
         }
@@ -36,7 +36,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public Coloris LibelleCouleur
+        public string LibelleCouleur
         {
             get
             {

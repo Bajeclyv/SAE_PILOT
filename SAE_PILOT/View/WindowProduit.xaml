@@ -6,13 +6,14 @@
     xmlns:local="clr-namespace:SAE_PILOT.View"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="WindowProduit"
-    Width="500"
-    Height="550"
+    Width="600"
+    Height="600"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <StackPanel
-        x:Name="ckDispo"
-        Width="300"
-        Margin="100,23,100,28">
+        x:Name="panelProduit"
+        Width="301"
+        Margin="150,44,149,25">
         <Label x:Name="labCode" Content="Code produit" />
         <TextBox
             x:Name="boxCode"
@@ -34,35 +35,39 @@
             x:Name="cbCat"
             Width="120"
             Margin="0,0,0,5"
-            HorizontalAlignment="Left" />
+            HorizontalAlignment="Left"
+            DisplayMemberPath="Value"
+            ItemsSource="{Binding dCategories}"
+            SelectedValuePath="Key" />
         <Label x:Name="labType" Content="Type" />
         <ComboBox
             x:Name="cbType"
             Width="120"
             Margin="0,0,0,5"
-            HorizontalAlignment="Left" />
-        <!--<TextBox
-            x:Name="boxType"
-            Width="120"
-            Text="{Binding LeType, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" />-->
+            HorizontalAlignment="Left"
+            DisplayMemberPath="Value"
+            ItemsSource="{Binding dTypes}"
+            SelectedValue="{Binding NumType, Mode=TwoWay}"
+            SelectedValuePath="Key" />
         <Label x:Name="labPointe" Content="Type de pointe" />
         <ComboBox
             x:Name="cbPointe"
             Width="120"
             Margin="0,0,0,5"
-            HorizontalAlignment="Left" />
-        <!--<TextBox
-            x:Name="boxPointe"
-            Width="120"
-            Text="{Binding LeTypePointe, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" />-->
+            HorizontalAlignment="Left"
+            DisplayMemberPath="Value"
+            ItemsSource="{Binding dPointes}"
+            SelectedValue="{Binding NumTypePointe, Mode=TwoWay}"
+            SelectedValuePath="Key" />
         <Label x:Name="labCouleur" Content="Couleur" />
         <ComboBox
             x:Name="cbCouleur"
             Width="120"
             Margin="0,0,0,5"
-            HorizontalAlignment="Left" />
+            HorizontalAlignment="Left"
+            DisplayMemberPath="Value"
+            ItemsSource="{Binding dCouleurs}"
+            SelectedValuePath="Key" />
         <Label x:Name="labVente" Content="Prix de vente" />
         <TextBox
             x:Name="boxVente"
@@ -81,6 +86,7 @@
             Text="{Binding QteStock, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
         <CheckBox
+            x:Name="ckDispo1"
             Margin="0,0,0,10"
             Content="Disponible"
             IsChecked="{Binding Disponible, ValidatesOnExceptions=True}" />
@@ -90,8 +96,8 @@
             Height="25"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
+            Click="butValiderProduit_Click"
             Content="Valider"
             Foreground="White" />
-
     </StackPanel>
 </Window>

@@ -53,6 +53,6 @@
             Background="#FF19459A"
             BorderBrush="{x:Null}"
             Content="Se connecter"
-            Foreground="#FFF8F6F6" />
+            Foreground="White" />
     </StackPanel>
 </UserControl>

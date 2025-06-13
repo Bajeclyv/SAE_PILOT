@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TD3_BindingBDPension.Model;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SAE_PILOT.View
 {
@@ -23,83 +24,30 @@ namespace SAE_PILOT.View
     /// </summary>
     public partial class WindowProduit : Window
     {
-        private List<Model.Type> types = new List<Model.Type>(); // précision de modèle sinon ambiguïté
-        private List<TypePointe> pointes = new List<TypePointe>();
-        private List<Categorie> categories = new List<Categorie>();
-        private List<Couleur> couleurs = new List<Couleur>();
         public WindowProduit(Produit unProduit)
         {
-            this.DataContext = unProduit;
             InitializeComponent();
-            SelectionCategorie();
-            SelectionType();
-            SelectionTypePointe();
-            SelectionCouleur();
-            InitComboBox();
+            this.DataContext = unProduit;
         }
-        private void SelectionCategorie()
+
+        private void butValiderProduit_Click(object sender, RoutedEventArgs e)
         {
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM categorie;"))
-            {
-                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-                foreach (DataRow dr in dt.Rows)
+                bool ok = true;
+                foreach (UIElement uie in panelProduit.Children)
                 {
-                    categories.Add(new Categorie((Int32)dr["numcategorie"], Enum.Parse<CategorieProduit>(dr["libellecategorie"].ToString())));
+                    if (uie is TextBox)
+                    {
+                        TextBox txt = (TextBox)uie;
+                        txt.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+                    }
+
+                    if (Validation.GetHasError(uie))
+                        ok = false;
                 }
-            }
-
-        }
-        private void SelectionType()
-        {
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM type;"))
-            {
-                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    types.Add(new Model.Type((Int32)dr["numtype"], (Int32)dr["numcategorie"], (string)dr["libelletype"]));
-                }
-            }
-        }
-        private void SelectionTypePointe()
-        {
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM typepointe;"))
-            {
-                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    pointes.Add(new TypePointe((Int32)dr["numtypepointe"], (EpaisseurPointe)dr["libelletypepointe"]));
-                }
-            }
-        }
-        private void SelectionCouleur()
-        {
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM couleur;"))
-            {
-                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
-                foreach (DataRow dr in dt.Rows)
-                {
-                    couleurs.Add(new Couleur((Int32)dr["numcouleur"], (Coloris)dr["libellecouleur"]));
-                }
-            }
-        }
-
-        private void InitComboBox()
-        {
-            cbCat.ItemsSource = categories;
-            cbCat.DisplayMemberPath = "libellecategorie";
-            cbCat.SelectedValuePath = "numcategorie";
-
-            cbCouleur.ItemsSource = couleurs;
-            cbCat.DisplayMemberPath = "libellecouleur";
-            cbCat.SelectedValuePath = "numcouleur";
-
-            cbPointe.ItemsSource = categories;
-            cbPointe.DisplayMemberPath = "libelletypepointe";
-            cbPointe.SelectedValuePath = "numtypepointe";
-
-            cbType.ItemsSource = types;
-            cbType.DisplayMemberPath = "libelletype";
-            cbType.SelectedValuePath = "numtype";
+                if (!ok)
+                    MessageBox.Show(this, "Erreur de saisie.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                    DialogResult = true;
         }
     }
 }

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SAE_PILOT.Model
 {
-    public enum EpaisseurPointe { Grosse, Moyenne, Fine};
+    //public enum EpaisseurPointe { Grosse, Moyenne, Fine};
     public class TypePointe
     {
         private int numTypePointe;
-        private EpaisseurPointe libelleTypePointe;
+        private string libelleTypePointe;
 
         public TypePointe () { }
-        public TypePointe(int numTypePointe, EpaisseurPointe libelleTypePointe)
+        public TypePointe(int numTypePointe, string libelleTypePointe)
         {
             this.NumTypePointe = numTypePointe;
             this.LibelleTypePointe = libelleTypePointe;
         }
-        public TypePointe(EpaisseurPointe libelleTypePointe)
+        public TypePointe(string libelleTypePointe)
         {
             this.LibelleTypePointe = libelleTypePointe;
         }
@@ -36,7 +36,7 @@ namespace SAE_PILOT.Model
             }
         }
 
-        public EpaisseurPointe LibelleTypePointe
+        public string LibelleTypePointe
         {
             get
             {
