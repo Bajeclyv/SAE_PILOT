@@ -76,8 +76,8 @@ namespace SAE_PILOT.View.UserControls
         private void butCreerProduit_Click(object sender, RoutedEventArgs e)
         {
             Produit unProduit = new Produit();
-            Model.Type unType = new Model.Type();
-            Couleur uneCouleur = new Couleur();
+            List<int> lesNumCouleurs = new List<int>();
+            //CouleurProduit cp = new CouleurProduit();
 
             WindowProduit wProduit = new WindowProduit(unProduit);
             bool? result = wProduit.ShowDialog();
@@ -88,6 +88,8 @@ namespace SAE_PILOT.View.UserControls
                     MessageBox.Show($"Catégorie sélectionnée : {unProduit.NumType}, {unProduit.NumTypePointe}");
                     unProduit.NumProduit = unProduit.Create();
                     ((GestionProduit)this.DataContext).LesProduits.Add(unProduit);
+                    lesNumCouleurs = SelectionCouleur(wProduit, unProduit);
+                    InsertionCouleurProduit(unProduit, lesNumCouleurs);
                 }
                 catch (Exception ex)
                 {
@@ -103,6 +105,35 @@ namespace SAE_PILOT.View.UserControls
             // 3. Si maj dans autre table, insérer la ligne
         }
 
-        
+         private List<int> SelectionCouleur(WindowProduit wProduit, Produit unProduit)
+         {
+            List<int> lesNumCouleurs = new List<int>();
+            string couleur = "";
+            int cle;
+
+            foreach(UIElement uie in wProduit.gCouleur.Children)
+            {
+                 if(uie is CheckBox cb && cb.IsChecked == true)
+                 {
+                      couleur = cb.Content.ToString();
+                      cle = unProduit.dCouleurs.FirstOrDefault(x => x.Value == couleur).Key;
+                      if (cle != 0)
+                        lesNumCouleurs.Add(cle);
+                 }
+                    
+            }
+            return lesNumCouleurs;
+         } 
+
+         private void InsertionCouleurProduit(Produit unProduit, List<int> lesNumCouleurs)
+         {
+            CouleurProduit cp = new CouleurProduit();
+            cp.NumProduit = unProduit.NumProduit;
+            foreach(int c in lesNumCouleurs)
+            {
+                cp.NumCouleur = c;
+                cp.Create();
+            }
+         }
     }
 }

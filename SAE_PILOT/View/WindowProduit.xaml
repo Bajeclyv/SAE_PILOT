@@ -30,7 +30,7 @@
             Margin="0,0,0,5"
             Text="{Binding NomProduit, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
-        <Label x:Name="labCat" Content="Categorie" />
+        <!--<Label x:Name="labCat" Content="Categorie" />
         <ComboBox
             x:Name="cbCat"
             Width="120"
@@ -38,7 +38,7 @@
             HorizontalAlignment="Left"
             DisplayMemberPath="Value"
             ItemsSource="{Binding dCategories}"
-            SelectedValuePath="Key" />
+            SelectedValuePath="Key" />-->
         <Label x:Name="labType" Content="Type" />
         <ComboBox
             x:Name="cbType"
@@ -60,22 +60,20 @@
             SelectedValue="{Binding NumTypePointe, Mode=TwoWay}"
             SelectedValuePath="Key" />
         <Label x:Name="labCouleur" Content="Couleur" />
-        <ComboBox
-            x:Name="cbCouleur"
-            Width="120"
-            Margin="0,0,0,5"
-            HorizontalAlignment="Left"
-            DisplayMemberPath="Value"
-            ItemsSource="{Binding dCouleurs}"
-            SelectedValuePath="Key" />
-        <Label x:Name="labVente" Content="Prix de vente" />
+        <Grid x:Name="gCouleur">
+        <CheckBox Content="bleu" Width="84" HorizontalAlignment="Left"/>
+        <CheckBox Content="vert" Width="84" HorizontalAlignment="Right"/>
+        <CheckBox Content="rouge" Width="84" Margin="72,0,145,0"/>
+        <CheckBox Content="noir" Width="84" Margin="150,0,67,0"/>
+        </Grid>
+        <Label x:Name="labVente" Content="Prix de vente" Margin="0,5,0,0" />
         <TextBox
             x:Name="boxVente"
-            Width="300"
+            Width="57"
             Height="20"
             Margin="0,0,0,5"
             Text="{Binding PrixVente, ValidatesOnExceptions=True}"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap" HorizontalAlignment="Left" />
         <Label x:Name="labStock" Content="Stock" />
         <TextBox
             x:Name="boxStock"
@@ -86,7 +84,7 @@
             Text="{Binding QteStock, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
         <CheckBox
-            x:Name="ckDispo1"
+            x:Name="ckDispo"
             Margin="0,0,0,10"
             Content="Disponible"
             IsChecked="{Binding Disponible, ValidatesOnExceptions=True}" />

@@ -287,7 +287,8 @@ namespace SAE_PILOT.Model
         public int Create()
         {
             int nb = 0;
-            using (var cmdInsert = new NpgsqlCommand("INSERT INTO produit (numtypepointe,numtype,codeproduit,nomproduit,prixvente,quantitestock,disponible) values (@numproduit,@numtypepointe,@numtype,@codeproduit, @nomproduit, @prixvente, @qtestock, @disponible) RETURNING numproduit"))
+
+            using (var cmdInsert = new NpgsqlCommand("INSERT INTO produit (numtypepointe,numtype,codeproduit,nomproduit,prixvente,quantitestock,disponible) values (@numtypepointe,@numtype,@codeproduit, @nomproduit, @prixvente, @qtestock, @disponible) RETURNING numproduit"))
             {
                 cmdInsert.Parameters.AddWithValue("numtypepointe", this.NumTypePointe);
                 cmdInsert.Parameters.AddWithValue("numtype", this.NumType);

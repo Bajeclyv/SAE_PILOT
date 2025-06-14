@@ -105,5 +105,32 @@ namespace SAE_PILOT.View.UserControls
                 CollectionViewSource.GetDefaultView(dgRevendeur.ItemsSource)?.Refresh();
             }
         }
+
+        private void butSupprimerRevendeur_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgRevendeur.SelectedItem == null)
+                MessageBox.Show("Veuillez sélectionner un revendeur", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+            {
+                Revendeur revendeurSupp = (Revendeur)dgRevendeur.SelectedItem;
+                try
+                {
+                    bool persiste = true;
+                    MessageBoxResult res = MessageBox.Show($"Êtes-vous sur de vouloir supprimer ce revendeur ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (res != MessageBoxResult.Yes)
+                        persiste = false;
+
+                    if (persiste)
+                    {
+                        revendeurSupp.Delete();
+                        ((GestionRevendeur)this.DataContext).LesRevendeurs.Remove(revendeurSupp);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Le revendeur n'a pas pu être supprimé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
     }
 }
