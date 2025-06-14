@@ -36,7 +36,12 @@ namespace SAE_PILOT.View.UserControls
 
         private bool RechercherProduit(object obj)
         {
-            if (String.IsNullOrEmpty(tbCategorie.Text) && String.IsNullOrEmpty(tbType.Text) && String.IsNullOrEmpty(tbTypePointe.Text) && String.IsNullOrEmpty(tbCouleur.Text))
+            string cat = (tbCategorie.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string type = (tbType.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string pointe = (tbTypePointe.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string couleur = (tbCouleur.SelectedItem as ComboBoxItem)?.Content.ToString(); 
+
+            if (String.IsNullOrEmpty(cat) && String.IsNullOrEmpty(type) && String.IsNullOrEmpty(pointe) && String.IsNullOrEmpty(couleur))
                 return true;
 
             bool filtreCat = true;
@@ -47,30 +52,24 @@ namespace SAE_PILOT.View.UserControls
 
             Produit unProduit = obj as Produit;
 
-            if (!String.IsNullOrEmpty(tbCategorie.Text))
-                filtreCat = unProduit.NomCategorie.ToLower().StartsWith(tbCategorie.Text, StringComparison.OrdinalIgnoreCase);
+            if (!String.IsNullOrEmpty(cat))
+                filtreCat = unProduit.NomCategorie.ToLower().StartsWith(cat, StringComparison.OrdinalIgnoreCase);
 
-            if (!String.IsNullOrEmpty(tbType.Text))
-                filtreType = unProduit.NomType.ToLower().StartsWith(tbType.Text, StringComparison.OrdinalIgnoreCase);
+            if (!String.IsNullOrEmpty(type))
+                filtreType = unProduit.NomType.ToLower().StartsWith(type, StringComparison.OrdinalIgnoreCase);
 
-            if (!String.IsNullOrEmpty(tbTypePointe.Text))
+            if (!String.IsNullOrEmpty(pointe))
             {
-                filtreTP = unProduit.NomTypePointe.ToLower().StartsWith(tbTypePointe.Text, StringComparison.OrdinalIgnoreCase);
+                filtreTP = unProduit.NomTypePointe.ToLower().StartsWith(pointe, StringComparison.OrdinalIgnoreCase);
             }
 
-            if (!String.IsNullOrEmpty(tbCouleur.Text))
+            if (!String.IsNullOrEmpty(couleur))
             {
                 // Split(',') : découpe la chaîne selon les virgules
                 // Trim() : supprime les espaces avec les mots
-                filtreCouleur = unProduit.NomCouleur.ToLower().Split(',').Any(c => c.Trim().ToLower().StartsWith(tbCouleur.Text, StringComparison.OrdinalIgnoreCase));
+                filtreCouleur = unProduit.NomCouleur.ToLower().Split(',').Any(c => c.Trim().ToLower().StartsWith(couleur, StringComparison.OrdinalIgnoreCase));
             }
-
             return filtreCat && filtreType && filtreTP && filtreCouleur;
-        }
-
-        private void tbProduit_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
         }
 
         private void butCreerProduit_Click(object sender, RoutedEventArgs e)
@@ -177,6 +176,12 @@ namespace SAE_PILOT.View.UserControls
                 cp.Create();
             }
             
+        }
+
+        private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
+
         }
     }
 }

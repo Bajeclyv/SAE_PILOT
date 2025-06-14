@@ -30,15 +30,6 @@
             Margin="0,0,0,5"
             Text="{Binding NomProduit, ValidatesOnExceptions=True}"
             TextWrapping="Wrap" />
-        <!--<Label x:Name="labCat" Content="Categorie" />
-        <ComboBox
-            x:Name="cbCat"
-            Width="120"
-            Margin="0,0,0,5"
-            HorizontalAlignment="Left"
-            DisplayMemberPath="Value"
-            ItemsSource="{Binding dCategories}"
-            SelectedValuePath="Key" />-->
         <Label x:Name="labType" Content="Type" />
         <ComboBox
             x:Name="cbType"

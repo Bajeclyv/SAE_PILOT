@@ -106,42 +106,6 @@
                     Header="Disponible" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox
-            x:Name="tbCategorie"
-            Width="120"
-            Margin="32,93,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text=""
-            TextChanged="tbProduit_TextChanged"
-            TextWrapping="Wrap" />
-        <TextBox
-            x:Name="tbType"
-            Width="120"
-            Margin="164,93,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text=""
-            TextChanged="tbProduit_TextChanged"
-            TextWrapping="Wrap" />
-        <TextBox
-            x:Name="tbTypePointe"
-            Width="120"
-            Margin="298,93,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text=""
-            TextChanged="tbProduit_TextChanged"
-            TextWrapping="Wrap" />
-        <TextBox
-            x:Name="tbCouleur"
-            Width="120"
-            Margin="435,93,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text=""
-            TextChanged="tbProduit_TextChanged"
-            TextWrapping="Wrap" />
         <Label
             Margin="27,70,0,0"
             HorizontalAlignment="Left"
@@ -167,5 +131,86 @@
             VerticalAlignment="Top"
             Content="Couleur"
             Foreground="Gray" />
+        <Grid>
+            <ComboBox x:Name="tbCategorie" 
+                  HorizontalAlignment="Left" 
+                  Margin="28,92,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="100" Height="20" 
+                  SelectionChanged="cb_SelectionChanged" >
+                <ComboBoxItem>
+                    école
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    bureau
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    loisir
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    haute écriture
+                </ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="tbType" 
+                  HorizontalAlignment="Left" 
+                  Margin="163,92,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="100" 
+                  Height="20"
+                  SelectionChanged="cb_SelectionChanged">
+                <ComboBoxItem>
+                    bille
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    roller gel
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    roller liquide
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    plume feutre
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    4 couleurs
+                </ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="tbTypePointe" 
+                      HorizontalAlignment="Left" 
+                      Margin="296,92,0,0" 
+                      VerticalAlignment="Top" 
+                      Width="100" 
+                      Height="20"
+                      SelectionChanged="cb_SelectionChanged">
+                <ComboBoxItem>
+                    fine
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    moyenne
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    épaisse
+                </ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="tbCouleur" 
+                      HorizontalAlignment="Left" 
+                      Margin="434,92,0,0" 
+                      VerticalAlignment="Top" 
+                      Width="100" 
+                      Height="20" 
+                      SelectionChanged="cb_SelectionChanged">
+                <ComboBoxItem>
+                    bleu
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    vert
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    rouge
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    noir
+                </ComboBoxItem>
+            </ComboBox>
+        </Grid>
     </Grid>
 </UserControl>
