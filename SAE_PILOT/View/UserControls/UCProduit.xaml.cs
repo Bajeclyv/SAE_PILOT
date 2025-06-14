@@ -83,7 +83,6 @@ namespace SAE_PILOT.View.UserControls
             {
                 try
                 {
-                    MessageBox.Show($"Catégorie sélectionnée : {unProduit.NumType}, {unProduit.NumTypePointe}");
                     unProduit.NumProduit = unProduit.Create();
                     ((GestionProduit)this.DataContext).LesProduits.Add(unProduit);
                     lesNumCouleurs = SelectionCouleur(wProduit, unProduit);
