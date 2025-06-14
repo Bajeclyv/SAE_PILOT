@@ -131,8 +131,8 @@ namespace SAE_PILOT.View.UserControls
                     {
                         MessageBox.Show("Le produit n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+                    CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
                 }
-                CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
             }
         }
 

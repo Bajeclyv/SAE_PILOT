@@ -84,7 +84,6 @@ namespace SAE_PILOT.Model
             {
                 this.numProduit = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumProduit)));
-
             }
         }
 
