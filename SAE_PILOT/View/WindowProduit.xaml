@@ -61,10 +61,10 @@
             SelectedValuePath="Key" />
         <Label x:Name="labCouleur" Content="Couleur" />
         <Grid x:Name="gCouleur">
-        <CheckBox Content="bleu" Width="84" HorizontalAlignment="Left"/>
-        <CheckBox Content="vert" Width="84" HorizontalAlignment="Right"/>
-        <CheckBox Content="rouge" Width="84" Margin="72,0,145,0"/>
-        <CheckBox Content="noir" Width="84" Margin="150,0,67,0"/>
+        <CheckBox x:Name="ckBleu" Content="bleu" Width="84" HorizontalAlignment="Left"/>
+            <CheckBox x:Name="ckVert" Content="vert" Width="84" HorizontalAlignment="Right"/>
+            <CheckBox x:Name="ckRouge" Content="rouge" Width="84" Margin="72,0,145,0"/>
+            <CheckBox x:Name="ckNoir" Content="noir" Width="84" Margin="150,0,67,0"/>
         </Grid>
         <Label x:Name="labVente" Content="Prix de vente" Margin="0,5,0,0" />
         <TextBox

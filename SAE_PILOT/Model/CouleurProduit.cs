@@ -63,7 +63,11 @@ namespace SAE_PILOT.Model
 
         public int Delete()
         {
-            throw new NotImplementedException();
+            using (var cmdUpdate = new NpgsqlCommand("delete from couleurproduit where numproduit = @numproduit;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numproduit", this.NumProduit);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
         }
 
         public List<CouleurProduit> FindAll()
@@ -90,7 +94,12 @@ namespace SAE_PILOT.Model
 
         public int Update()
         {
-            throw new NotImplementedException();
+            using (var cmdUpdate = new NpgsqlCommand("UPDATE couleurproduit SET numcouleur=@numcouleur WHERE numproduit=@numproduit"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numproduit", this.NumProduit);
+                cmdUpdate.Parameters.AddWithValue("numcouleur", this.NumCouleur);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
         }
     }
 }

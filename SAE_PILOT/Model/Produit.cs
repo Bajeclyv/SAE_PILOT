@@ -324,7 +324,7 @@ namespace SAE_PILOT.Model
             using (var cmdUpdate = new NpgsqlCommand("UPDATE produit SET numtypepointe=@numtypepointe, numtype=@numtype, codeproduit=@codeproduit, " +
                "nomproduit=@nomproduit, prixvente=@prixvente, quantitestock=@qtestock, disponible=@disponible WHERE numproduit=@numproduit"))
             {
-                cmdUpdate.Parameters.AddWithValue("numproduit", this.NomProduit);
+                cmdUpdate.Parameters.AddWithValue("numproduit", this.NumProduit);
                 cmdUpdate.Parameters.AddWithValue("numtypepointe", this.NumTypePointe);
                 cmdUpdate.Parameters.AddWithValue("numtype", this.NumType);
                 cmdUpdate.Parameters.AddWithValue("codeproduit", this.CodeProduit);

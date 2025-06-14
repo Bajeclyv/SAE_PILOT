@@ -77,7 +77,6 @@ namespace SAE_PILOT.View.UserControls
         {
             Produit unProduit = new Produit();
             List<int> lesNumCouleurs = new List<int>();
-            //CouleurProduit cp = new CouleurProduit();
 
             WindowProduit wProduit = new WindowProduit(unProduit);
             bool? result = wProduit.ShowDialog();
@@ -100,9 +99,41 @@ namespace SAE_PILOT.View.UserControls
 
         private void butModifierProduit_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Récuperer categorie, type, typepointe et couleur : commande sql + liste
-            // 2. Transformer cette liste en choix combobox
-            // 3. Si maj dans autre table, insérer la ligne
+            if (dgProduit.SelectedItem == null)
+                MessageBox.Show("Veuillez sélectionner un produit", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+            {
+                Produit produitSelectionne = (Produit)dgProduit.SelectedItem;
+                Produit copie = new Produit(produitSelectionne.NumProduit, produitSelectionne.NumTypePointe, produitSelectionne.NumType, produitSelectionne.CodeProduit, produitSelectionne.NomProduit, produitSelectionne.PrixVente, produitSelectionne.QteStock);
+                WindowProduit wProduit = new WindowProduit(copie);
+                List<int> lesNumCouleurs = new List<int>();
+
+                bool? result = wProduit.ShowDialog();
+                if (result == true)
+                {
+                    try
+                    {
+                        copie.Update();
+                        produitSelectionne.NumProduit = copie.NumProduit;
+                        produitSelectionne.NumType = copie.NumType;
+                        produitSelectionne.NumTypePointe = copie.NumTypePointe;
+                        produitSelectionne.CodeProduit = copie.CodeProduit;
+                        produitSelectionne.NomProduit = copie.NomProduit;
+                        produitSelectionne.PrixVente = copie.PrixVente;
+                        produitSelectionne.QteStock = copie.QteStock;
+                        lesNumCouleurs = SelectionCouleur(wProduit, copie);
+                        if (!wProduit.gCouleur.Children.OfType<CheckBox>().Any(cb => cb.IsChecked == true))
+                            return;
+                        else 
+                            UpdateCouleurProduit(copie, lesNumCouleurs);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Le produit n'a pas pu être modifié.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
+            }
         }
 
          private List<int> SelectionCouleur(WindowProduit wProduit, Produit unProduit)
@@ -135,5 +166,17 @@ namespace SAE_PILOT.View.UserControls
                 cp.Create();
             }
          }
+        private void UpdateCouleurProduit(Produit unProduit, List<int> lesNumCouleurs)
+        {
+            CouleurProduit cp = new CouleurProduit();
+            cp.NumProduit = unProduit.NumProduit;
+            cp.Delete();
+            foreach (int c in lesNumCouleurs)
+            {
+                cp.NumCouleur = c;
+                cp.Create();
+            }
+            
+        }
     }
 }
