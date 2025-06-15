@@ -67,11 +67,20 @@
         <Grid>
             <DataGrid
                 Height="200"
-                Margin="29,98,-423,86"
+                Margin="19,92,-352,92"
                 AutoGenerateColumns="False"
                 IsReadOnly="True"
                 ItemsSource="{Binding LesProduits}"
                 RenderTransformOrigin="0.5,0.5" />
+            <Button
+    x:Name="butAjouterProduit"
+    Width="100"
+    Height="25"
+    Margin="186,311,-186,48"
+    Background="#FF19459A"
+    BorderBrush="{x:Null}"
+    Content="Ajouter un produit"
+    Foreground="White" Click="butAjouterProduit_Click" />
         </Grid>
     </StackPanel>
 </Window>

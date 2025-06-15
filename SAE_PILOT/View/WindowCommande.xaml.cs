@@ -22,13 +22,18 @@ namespace SAE_PILOT.View
     public partial class WindowCommande : Window
     {
         Commande laCommande;
-        List<Produit> lesProduits;
-        ObservableCollection<Produit> produitList;
+        ObservableCollection<ProduitCommande> lesProduits;
         public WindowCommande()
         {
             laCommande = new Commande();
-            this.DataContext = new Commande();
+            this.DataContext = laCommande;
+            this.lesProduits = laCommande.Detail.LesDetails;
             InitializeComponent();
+        }
+
+        private void butAjouterProduit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,190 @@
+﻿<Window x:Class="SAE_PILOT.View.WindowCommandeAjouterProduit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SAE_PILOT.View"
+        mc:Ignorable="d"
+        Title="Ajouter un produit" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Label
+        x:Name="labTitre"
+        Margin="28,22,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Content="Ajouter un produit"
+        FontFamily="Rubik"
+        FontSize="26"
+        FontWeight="Bold"
+        Foreground="#FF19459A" />
+            <Button
+        x:Name="butAjouterProduit"
+        Width="30"
+        Height="30"
+        Margin="28,333,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Background="#FF19459A"
+        BorderBrush="{x:Null}"
+        Content="&#xE710;"
+        FontFamily="Segoe MDL2 Assets"
+        Foreground="#FFF8F6F6"
+        RenderTransformOrigin="0.534,0.038"
+        ToolTip="Ajouter" Click="butCreerProduit_Click" />
+            <TextBox x:Name="tbQuantite" Width="100" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Text="0" Margin="0,260,550,0" />
+            <DataGrid
+        x:Name="dgProduit"
+        Height="200"
+        Margin="28,132,29,118"
+        AutoGenerateColumns="False"
+        IsReadOnly="True"
+        ItemsSource="{Binding LesProduits}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding CodeProduit, ValidatesOnExceptions=true}"
+                Header="Code Produit" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding NomProduit, ValidatesOnExceptions=true}"
+                Header="Nom Produit" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding PrixVente, ValidatesOnExceptions=true}"
+                Header="Prix vente" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding NomCategorie, ValidatesOnExceptions=true}"
+                Header="Categorie" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding NomType, ValidatesOnExceptions=true}"
+                Header="Type" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding NomTypePointe, ValidatesOnExceptions=true}"
+                Header="Type pointe" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding NomCouleur, ValidatesOnExceptions=true}"
+                Header="Couleur" />
+                    <DataGridTextColumn
+                Width="*"
+                Binding="{Binding QteStock, ValidatesOnExceptions=true}"
+                Header="Stock" />
+                    <DataGridCheckBoxColumn
+                Width="*"
+                Binding="{Binding Disponible, ValidatesOnExceptions=true}"
+                Header="Disponible" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label
+        Margin="27,70,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Background="Transparent"
+        Content="Catégorie"
+        Foreground="Gray" />
+            <Label
+        Margin="157,70,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Content="Type"
+        Foreground="Gray" />
+            <Label
+        Margin="291,70,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Content="Type de pointe"
+        Foreground="Gray" />
+            <Label
+        Margin="429,70,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Content="Couleur"
+        Foreground="Gray" />
+            <Grid>
+                <ComboBox x:Name="tbCategorie" 
+              HorizontalAlignment="Left" 
+              Margin="28,92,0,0" 
+              VerticalAlignment="Top" 
+              Width="100" Height="20" 
+              SelectionChanged="cb_SelectionChanged" >
+                    <ComboBoxItem>
+                        école
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        bureau
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        loisir
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        haute écriture
+                    </ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="tbType" 
+              HorizontalAlignment="Left" 
+              Margin="163,92,0,0" 
+              VerticalAlignment="Top" 
+              Width="100" 
+              Height="20"
+              SelectionChanged="cb_SelectionChanged">
+                    <ComboBoxItem>
+                        bille
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        roller gel
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        roller liquide
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        plume feutre
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        4 couleurs
+                    </ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="tbTypePointe" 
+                  HorizontalAlignment="Left" 
+                  Margin="296,92,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="100" 
+                  Height="20"
+                  SelectionChanged="cb_SelectionChanged">
+                    <ComboBoxItem>
+                        fine
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        moyenne
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        épaisse
+                    </ComboBoxItem>
+                </ComboBox>
+                <ComboBox x:Name="tbCouleur" 
+                  HorizontalAlignment="Left" 
+                  Margin="434,92,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="100" 
+                  Height="20" 
+                  SelectionChanged="cb_SelectionChanged">
+                    <ComboBoxItem>
+                        bleu
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        vert
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        rouge
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        noir
+                    </ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
