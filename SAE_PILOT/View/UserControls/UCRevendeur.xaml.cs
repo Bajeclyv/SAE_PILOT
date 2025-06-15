@@ -117,11 +117,11 @@ namespace SAE_PILOT.View.UserControls
             else
             {
                 Revendeur revendeurSupp = (Revendeur)dgRevendeur.SelectedItem;
-                DateTime livraison = RechercherCommandeRevendeur(revendeurSupp);
+                DateTime? livraison = RechercherCommandeRevendeur(revendeurSupp);
                 try
                 {
                     bool persiste = true;
-                    if (livraison < DateTime.Now)
+                    if (livraison < DateTime.Now || livraison == null)
                     {
                         MessageBoxResult res = MessageBox.Show($"Êtes-vous sur de vouloir supprimer ce revendeur ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                         if (res != MessageBoxResult.Yes)
@@ -145,10 +145,10 @@ namespace SAE_PILOT.View.UserControls
                 }
             }
         }
-        private DateTime RechercherCommandeRevendeur(Revendeur unRevendeur)
+        private DateTime? RechercherCommandeRevendeur(Revendeur unRevendeur)
         {
             List<DateTime> lesDates = new List<DateTime>();
-            DateTime max;
+            DateTime? max = null;
 
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select datelivraison from commande where numrevendeur=@numrevendeur;"))
             {
@@ -159,9 +159,11 @@ namespace SAE_PILOT.View.UserControls
                     lesDates.Add((DateTime)dr["datelivraison"]);
                 }
             }
-            max = lesDates.Max();
+            if (lesDates.Count > 0)
+            {
+                max = lesDates.Max();
+            }
             return max;
         }
-
     }
 }
