@@ -23,7 +23,7 @@
             x:Name="butCreerProduit"
             Width="30"
             Height="30"
-            Margin="28,333,0,0"
+            Margin="28,353,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -37,7 +37,7 @@
             x:Name="butModifierProduit"
             Width="30"
             Height="30"
-            Margin="204,333,0,0"
+            Margin="204,353,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -51,7 +51,7 @@
             x:Name="butSupprimerProduit"
             Width="30"
             Height="30"
-            Margin="349,333,0,0"
+            Margin="349,353,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="#FF19459A"
@@ -63,7 +63,7 @@
         <DataGrid
             x:Name="dgProduit"
             Height="200"
-            Margin="28,132,29,118"
+            Margin="28,152,29,98"
             AutoGenerateColumns="False"
             IsReadOnly="True"
             ItemsSource="{Binding LesProduits}">
@@ -131,7 +131,7 @@
             VerticalAlignment="Top"
             Content="Couleur"
             Foreground="Gray" />
-        <Grid>
+        <Grid Margin="0,0,0,336">
             <ComboBox x:Name="tbCategorie" 
                   HorizontalAlignment="Left" 
                   Margin="28,92,0,0" 
@@ -212,5 +212,6 @@
                 </ComboBoxItem>
             </ComboBox>
         </Grid>
+        <RadioButton x:Name="rbFiltre" Content="Supprimer les filtres" HorizontalAlignment="Left" Margin="27,124,0,0" VerticalAlignment="Top" Foreground="Gray" Checked="rbFiltre_Checked"/>
     </Grid>
 </UserControl>

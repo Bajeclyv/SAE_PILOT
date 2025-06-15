@@ -41,7 +41,7 @@ namespace SAE_PILOT.View.UserControls
             string pointe = (tbTypePointe.SelectedItem as ComboBoxItem)?.Content.ToString();
             string couleur = (tbCouleur.SelectedItem as ComboBoxItem)?.Content.ToString(); 
 
-            if (String.IsNullOrEmpty(cat) && String.IsNullOrEmpty(type) && String.IsNullOrEmpty(pointe) && String.IsNullOrEmpty(couleur))
+            if ((String.IsNullOrEmpty(cat) && String.IsNullOrEmpty(type) && String.IsNullOrEmpty(pointe) && String.IsNullOrEmpty(couleur)))
                 return true;
 
             bool filtreCat = true;
@@ -179,8 +179,17 @@ namespace SAE_PILOT.View.UserControls
 
         private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(rbFiltre.IsChecked== true)
+                rbFiltre.IsChecked = false;
             CollectionViewSource.GetDefaultView(dgProduit.ItemsSource)?.Refresh();
+        }
 
+        private void rbFiltre_Checked(object sender, RoutedEventArgs e)
+        {
+            tbCategorie.SelectedIndex = -1;
+            tbType.SelectedIndex = -1;
+            tbTypePointe.SelectedIndex = -1;
+            tbCouleur.SelectedIndex = -1;
         }
     }
 }
