@@ -128,6 +128,8 @@ namespace SAE_PILOT.View.UserControls
                             persiste = false;
                         if (persiste)
                         {
+                            revendeurSupp.DeleteProduitCommande();
+                            revendeurSupp.DeleteCommande();
                             revendeurSupp.Delete();
                             ((GestionRevendeur)this.DataContext).LesRevendeurs.Remove(revendeurSupp);
                         }
@@ -165,5 +167,14 @@ namespace SAE_PILOT.View.UserControls
             }
             return max;
         }
+        //private void DeleteCommande(Revendeur unRevendeur)
+        //{
+        //    Commande c = new Commande();
+        //    ProduitCommande pc = new ProduitCommande();
+        //    c.NumRevendeur = unRevendeur.NumRevendeur;
+        //    pc.NumCommande = c.NumCommande;
+        //    pc.DeleteAvecCommande();
+        //    c.DeleteAvecRevendeur();
+        //}
     }
 }

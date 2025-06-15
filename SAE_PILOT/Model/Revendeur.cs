@@ -184,5 +184,22 @@ namespace SAE_PILOT.Model
         {
             throw new NotImplementedException();
         }
+        public int DeleteCommande()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("delete from commande where numrevendeur = @numrevendeur;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
+        public int DeleteProduitCommande()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("delete from produitcommande pc using commande c, revendeur r" +
+                " where pc.numcommande=c.numcommande and c.numrevendeur=r.numrevendeur and r.numrevendeur=@numrevendeur;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
+        }
     }
 }

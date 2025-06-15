@@ -267,11 +267,11 @@ namespace SAE_PILOT.Model
         {
             using (var cmdUpdate = new NpgsqlCommand("delete from commande  where numcommande = @numcommande;"))
             {
-                cmdUpdate.Parameters.AddWithValue("id", this.NumCommande);
+                cmdUpdate.Parameters.AddWithValue("numcommande", this.NumCommande);
                 return DataAccess.Instance.ExecuteSet(cmdUpdate);
             }
         }
-
+        
         public List<Commande> FindBySelection(string criteres)
         {
             throw new NotImplementedException();
