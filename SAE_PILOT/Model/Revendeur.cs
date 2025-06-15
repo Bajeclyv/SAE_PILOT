@@ -175,7 +175,7 @@ namespace SAE_PILOT.Model
         {
             using (var cmdUpdate = new NpgsqlCommand("delete from revendeur where numrevendeur = @numrevendeur;"))
             {
-                cmdUpdate.Parameters.AddWithValue("id", this.NumRevendeur);
+                cmdUpdate.Parameters.AddWithValue("numrevendeur", this.NumRevendeur);
                 return DataAccess.Instance.ExecuteSet(cmdUpdate);
             }
         }

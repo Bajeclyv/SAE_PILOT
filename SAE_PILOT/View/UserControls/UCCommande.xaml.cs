@@ -42,11 +42,6 @@ namespace SAE_PILOT.View.UserControls
             }
         }
 
-        private void butCreerCom_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

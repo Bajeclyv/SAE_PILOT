@@ -18,6 +18,7 @@ namespace SAE_PILOT.Model
 
         // Peut-être faire une liste observable des produits pour aller récupérer les infos ?
         
+        public ProduitCommande() { }
         public ProduitCommande(int numCommande, int numProduit, int qteCommande, double prix)
         {
             this.NumCommande = numCommande;
@@ -101,7 +102,11 @@ namespace SAE_PILOT.Model
 
         public int Delete()
         {
-            throw new NotImplementedException();
+            using (var cmdUpdate = new NpgsqlCommand("delete from produitcommande where numproduit = @numproduit;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("numproduit", this.NumProduit);
+                return DataAccess.Instance.ExecuteSet(cmdUpdate);
+            }
         }
 
         public List<ProduitCommande> FindAll()

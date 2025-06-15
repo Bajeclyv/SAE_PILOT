@@ -1,7 +1,9 @@
-﻿using SAE_PILOT.Model;
+﻿using Npgsql;
+using SAE_PILOT.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TD3_BindingBDPension.Model;
 
 namespace SAE_PILOT.View.UserControls
 {
@@ -106,6 +109,7 @@ namespace SAE_PILOT.View.UserControls
             }
         }
 
+        // LOGIQUE : lorsque date livraison passée -> revendeur peut-être supprimé 
         private void butSupprimerRevendeur_Click(object sender, RoutedEventArgs e)
         {
             if (dgRevendeur.SelectedItem == null)
@@ -113,18 +117,27 @@ namespace SAE_PILOT.View.UserControls
             else
             {
                 Revendeur revendeurSupp = (Revendeur)dgRevendeur.SelectedItem;
+                DateTime livraison = RechercherCommandeRevendeur(revendeurSupp);
                 try
                 {
                     bool persiste = true;
-                    MessageBoxResult res = MessageBox.Show($"Êtes-vous sur de vouloir supprimer ce revendeur ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                    if (res != MessageBoxResult.Yes)
-                        persiste = false;
-
-                    if (persiste)
+                    if (livraison < DateTime.Now)
                     {
-                        revendeurSupp.Delete();
-                        ((GestionRevendeur)this.DataContext).LesRevendeurs.Remove(revendeurSupp);
+                        MessageBoxResult res = MessageBox.Show($"Êtes-vous sur de vouloir supprimer ce revendeur ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                        if (res != MessageBoxResult.Yes)
+                            persiste = false;
+                        if (persiste)
+                        {
+                            revendeurSupp.Delete();
+                            ((GestionRevendeur)this.DataContext).LesRevendeurs.Remove(revendeurSupp);
+                        }
                     }
+                    else
+                    {
+                        MessageBoxResult res = MessageBox.Show($"Veuillez attendre la fin de la livraison pour supprimer ce revendeur", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+                        persiste = false;
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -132,5 +145,23 @@ namespace SAE_PILOT.View.UserControls
                 }
             }
         }
+        private DateTime RechercherCommandeRevendeur(Revendeur unRevendeur)
+        {
+            List<DateTime> lesDates = new List<DateTime>();
+            DateTime max;
+
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select datelivraison from commande where numrevendeur=@numrevendeur;"))
+            {
+                cmdSelect.Parameters.AddWithValue("numrevendeur", unRevendeur.NumRevendeur);
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    lesDates.Add((DateTime)dr["datelivraison"]);
+                }
+            }
+            max = lesDates.Max();
+            return max;
+        }
+
     }
 }

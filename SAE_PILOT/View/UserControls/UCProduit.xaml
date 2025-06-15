@@ -59,7 +59,7 @@
             Content="&#xE74D;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
-            ToolTip="Supprimer" />
+            ToolTip="Supprimer" Click="butSupprimerProduit_Click" />
         <DataGrid
             x:Name="dgProduit"
             Height="200"

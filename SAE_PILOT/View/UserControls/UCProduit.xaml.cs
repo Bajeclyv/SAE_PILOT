@@ -133,9 +133,41 @@ namespace SAE_PILOT.View.UserControls
                 }
             }
         }
+        private void butSupprimerProduit_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgProduit.SelectedItem == null)
+                MessageBox.Show("Veuillez sélectionner un produit", "Attention", MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+            {
+                Produit produitSupp = (Produit)dgProduit.SelectedItem;
+                try
+                {
+                    bool persiste = true;
+                    int nbCommande = produitSupp.FindNbCommande();
+                    if (nbCommande > 0)
+                    {
+                        MessageBoxResult res = MessageBox.Show($"Attention ce produit est lié à {nbCommande} commande(s). Désirez-vous tout de même supprimer ce produit dans ses {nbCommande} commande(s) ?", "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                        if (res != MessageBoxResult.Yes)
+                            persiste = false;
+                    }
 
-         private List<int> SelectionCouleur(WindowProduit wProduit, Produit unProduit)
-         {
+                    if (persiste)
+                    {
+                        DeleteCouleurProduit(produitSupp);
+                        DeleteProduitCommande(produitSupp);
+                        produitSupp.Delete();
+                        ((GestionProduit)this.DataContext).LesProduits.Remove(produitSupp);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Le produit n'a pas pu être supprimé.", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private List<int> SelectionCouleur(WindowProduit wProduit, Produit unProduit)
+        {
             List<int> lesNumCouleurs = new List<int>();
             string couleur = "";
             int cle;
@@ -152,7 +184,7 @@ namespace SAE_PILOT.View.UserControls
                     
             }
             return lesNumCouleurs;
-         } 
+        } 
 
          private void InsertionCouleurProduit(Produit unProduit, List<int> lesNumCouleurs)
          {
@@ -173,8 +205,19 @@ namespace SAE_PILOT.View.UserControls
             {
                 cp.NumCouleur = c;
                 cp.Create();
-            }
-            
+            }           
+        }
+        private void DeleteCouleurProduit(Produit unProduit)
+        {
+            CouleurProduit cp = new CouleurProduit();
+            cp.NumProduit = unProduit.NumProduit;
+            cp.Delete();
+        }
+        private void DeleteProduitCommande(Produit unProduit)
+        {
+            ProduitCommande pc = new ProduitCommande();
+            pc.NumProduit = unProduit.NumProduit;
+            pc.Delete();
         }
 
         private void cb_SelectionChanged(object sender, SelectionChangedEventArgs e)

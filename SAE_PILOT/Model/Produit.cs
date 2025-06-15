@@ -429,5 +429,15 @@ namespace SAE_PILOT.Model
             }
             return dCouleurs;
         }
+        public int FindNbCommande()
+        {
+            int nb = 0;
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select count(*) from produitcommande where numproduit = @numproduit; "))
+            {
+                cmdSelect.Parameters.AddWithValue("numproduit", this.NumProduit);
+                return (int)(Int64)DataAccess.Instance.ExecuteSelectUneValeur(cmdSelect);
+            }
+            return nb;
+        }
     }
 }

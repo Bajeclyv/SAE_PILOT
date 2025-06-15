@@ -28,10 +28,10 @@
             VerticalAlignment="Top"
             Background="#FF19459A"
             BorderBrush="{x:Null}"
-            Click="butCreerCom_Click"
             Content="&#xE710;"
             FontFamily="Segoe MDL2 Assets"
             Foreground="#FFF8F6F6"
+            Click="btnCreerCommande_Click"
             RenderTransformOrigin="0.534,0.038"
             ToolTip="Ajouter" />
         <Button
